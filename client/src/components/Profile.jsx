@@ -15,7 +15,25 @@ const Profile = ({ user }) => {
 		const response = await axios.get(`${BASE_URL}/users/${userId}`);
 		setProfile(response.data);
 	};
+	const handleUpdateClick = () => {
+		navigate(`/update-profile/${userId}`);
+	};
 
+	const handleDeleteClick = async () => {
+        const response = confirm("Are you sure you want to delete your account?")
+        if (response){
+            alert ("Please keep me in mind for your next goal")
+            await Client.delete(`${BASE_URL}/users/${userId}`);
+        }
+        else{
+            alert("woah, that was scary. I am looking forward to helping you reach your fitness goals.")
+        }
+		
+	};
+
+	useEffect(() => {
+		getProfile();
+	}, [user]);
 
 	useEffect(() => {
 		getProfile();
@@ -23,7 +41,29 @@ const Profile = ({ user }) => {
 
 	return (
 		<div className="profile">
-			
+			<section className="profileRight">
+				<h1>
+					{profile.firstName} {profile.lastName}
+				</h1>
+				<h2>Email</h2>
+				<h3>{profile.email}</h3>
+				<h2>Contact Number</h2>
+				<h3>{profile.phoneNumber}</h3>
+	
+				{user && user.id === userId && (
+					<div>
+						<h2>UserName</h2>
+						<h3>{profile.username}</h3>
+						<button onClick={handleDeleteClick}>
+							Delete Profile
+						</button>
+						<button onClick={handleUpdateClick}>
+							Update Profile
+						</button>
+					</div>
+				)}
+				
+			</section>
 		</div>
 	);
 };
