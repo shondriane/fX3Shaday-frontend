@@ -23,7 +23,7 @@ const Profile = ({ user }) => {
 
 	const handleDeleteClick = async () => {
             await Client.delete(`${BASE_URL}/users/${userId}`);
-		
+		    navigate(`/`)
 	};
 
     const handleClick=async()=>{
