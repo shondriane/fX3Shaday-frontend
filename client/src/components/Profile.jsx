@@ -4,12 +4,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../globals';
 import Client from '../services/Api';
+import '../index.css';
 
 const Profile = ({ user }) => {
 	let navigate = useNavigate();
 	const { user_id } = useParams();
 	const userId = parseInt(user_id);
 	const [profile, setProfile] = useState([]);
+    const [show,setShow]=useState(false)
 
 	const getProfile = async () => {
 		const response = await axios.get(`${BASE_URL}/users/${userId}`);
@@ -20,16 +22,13 @@ const Profile = ({ user }) => {
 	};
 
 	const handleDeleteClick = async () => {
-        const response = confirm("Are you sure you want to delete your account?")
-        if (response){
-            alert ("Please keep me in mind for your next goal")
             await Client.delete(`${BASE_URL}/users/${userId}`);
-        }
-        else{
-            alert("woah, that was scary. I am looking forward to helping you reach your fitness goals.")
-        }
 		
 	};
+
+    const handleClick=async()=>{
+        setShow(true)
+    }
 
 	useEffect(() => {
 		getProfile();
@@ -41,7 +40,7 @@ const Profile = ({ user }) => {
 
 	return (
 		<div className="profile">
-			<section className="profileRight">
+			<section className="profileSection">
 				<h1>
 					{profile.firstName} {profile.lastName}
 				</h1>
@@ -49,19 +48,39 @@ const Profile = ({ user }) => {
 				<h3>{profile.email}</h3>
 				<h2>Contact Number</h2>
 				<h3>{profile.phoneNumber}</h3>
-	
-				{user && user.id === userId && (
-					<div>
-						<h2>UserName</h2>
-						<h3>{profile.username}</h3>
-						<button onClick={handleDeleteClick}>
-							Delete Profile
-						</button>
-						<button onClick={handleUpdateClick}>
+                <button onClick={handleUpdateClick}>
 							Update Profile
 						</button>
-					</div>
-				)}
+                        <button onClick={handleClick}>
+							Delete Profile
+						</button>
+	
+				{ show &&(
+					 <div id ="id01" className="modal">
+                    
+                     <form className="modal-content">
+                         <div className="container">
+<h1>
+Delete Account
+</h1>
+<p>
+Are you sure you want to delete your account
+</p>
+                        
+                         
+                   <div class="clearfix">
+                     <button onClick={handleDeleteClick}>
+                         Delete 
+                     </button>
+                     <button onClick={handleUpdateClick}>
+                         cancel
+                     </button>
+                     </div>
+                 </div>
+                 </form>
+                 </div>
+                )}
+                    	
 				
 			</section>
 		</div>
