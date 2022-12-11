@@ -4,6 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_URL } from '../globals';
 import Client from '../services/Api';
+import Button from '@mui/material/Button'
+import DeleteIcon from '@mui/icons-material/Delete'
+import AddCircleIcon from '@mui/icons-material/AddCircle'
+import ClearIcon from '@mui/icons-material/Clear';
 import '../index.css';
 
 const Profile = ({ user }) => {
@@ -48,12 +52,12 @@ const Profile = ({ user }) => {
 				<h3>{profile.email}</h3>
 				<h2>Contact Number</h2>
 				<h3>{profile.phoneNumber}</h3>
-                <button onClick={handleUpdateClick}>
+                <Button variant="contained" startIcon={<AddCircleIcon/>}onClick={handleUpdateClick}>
 							Update Profile
-						</button>
-                        <button onClick={handleClick}>
+						</Button>
+                        <Button variant="outlined" endIcon={<DeleteIcon/>} onClick={handleClick}>
 							Delete Profile
-						</button>
+						</Button>
 	
 				{ show &&(
 					 <div id ="id01" className="modal">
@@ -69,12 +73,13 @@ Are you sure you want to delete your account
                         
                          
                    <div class="clearfix">
-                     <button onClick={handleDeleteClick}>
-                         Delete 
-                     </button>
-                     <button onClick={handleUpdateClick}>
+                   <Button variant="contained" endIcon = {<ClearIcon/>}onClick={handleUpdateClick}>
                          cancel
-                     </button>
+                     </Button>
+                     <Button variant="outlined" startIcon={<DeleteIcon/>} onClick={handleDeleteClick}>
+                         Delete 
+                     </Button>
+                    
                      </div>
                  </div>
                  </form>

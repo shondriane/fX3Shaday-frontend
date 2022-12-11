@@ -6,7 +6,6 @@ import { CheckSession } from './services/Auth';
 import Register from './components/Register';
 import SignIn from './components/SignIn'
 import UpdateProfile from './components/UpdateProfile'
-import DeleteConfirmation from './components/DeleteConfirm'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
 
@@ -65,10 +64,7 @@ function App() {
             path="/update-profile/:user_id"
             element={<UpdateProfile user={user} />}
           />
-           <Route
-            path="/delete-profile/:user_id"
-            element={<DeleteConfirmation user={user} />}
-          />
+         
 </Routes>
 
           

@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { BASE_URL } from '../globals';
 import Client from '../services/Api';
+import SendIcon from '@mui/icons-material/Send';
+import Button from '@mui/material/Button';
 
 const UpdateProfile = ({  }) => {
 	const { user_id } = useParams();
@@ -104,7 +106,7 @@ const UpdateProfile = ({  }) => {
 					/>
 				</div>
 				
-				<button>Submit</button>
+				<Button variant="contained" endIcon={<SendIcon/>}>Submit</Button>
 			</form>
 		</div>
 	);

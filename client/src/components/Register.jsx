@@ -1,6 +1,18 @@
 import { useState } from 'react'
 import { RegisterUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
+import LoginIcon from '@mui/icons-material/Login';
+import Button   from '@mui/material/Button'
+import Avatar from '@mui/material/Avatar';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const Register = () => {
   const navigate = useNavigate()
@@ -19,6 +31,7 @@ const Register = () => {
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
+   
   }
 
   const handleSubmit = async (e) => {
@@ -37,95 +50,107 @@ const Register = () => {
       navigate('/sign-in')
     
   }
+  const theme = createTheme()
   return (
-    <div className="registerPage">
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <div className="label">
-            <label htmlFor="firstName">First Name:</label>
-          </div>
-          <input
-            onChange={handleChange}
-            name="firstName"
-            type="text"
-            placeholder="Rainbow"
-            value={formValues.firstName}
-            required
-          />
-        </div>
-        <div>
-          <div className="label">
-            <label htmlFor="lastName">Last Name:</label>
-          </div>
-          <input
-            onChange={handleChange}
-            name="lastName"
-            type="text"
-            placeholder="Sunshine"
-            value={formValues.lastName}
-            required
-          />
-        </div>
-        <div>
-          <div className="label">
-            <label htmlFor="username">Username:</label>
-          </div>
-          <input
-            onChange={handleChange}
-            name="username"
-            type="text"
-            placeholder="pretzel89"
-            value={formValues.username}
-            required
-          />
-        </div>
-        <div>
-          <div className="label">
-            <label htmlFor="password">Password:</label>
-          </div>
-          <input
-            onChange={handleChange}
-            name="password"
-            type="password"
-            placeholder="create password"
-            value={formValues.password}
-            required
-          />
-        </div>
-        <div>
-          <div className="label">
-            <label htmlFor="email">Email:</label>
-          </div>
-          <input
-            onChange={handleChange}
-            name="email"
-            type="email"
-            placeholder="example@mail.com"
-            value={formValues.email}
-            required
-          />
-        </div>
-        <div>
-          <div className="label">
-            <label htmlFor="phoneNumber">Phone Number:</label>
-          </div>
-          <input
-            onChange={handleChange}
-            name="phoneNumber"
-            type="text"
-            placeholder="123-456-7891"
-            value={formValues.phoneNumber}
-            required
-          />
-        </div>
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs" >
+        <CssBaseline/>
+        <Box sx={{marginTop:8,display:'flex',flexDirection:'column',alignItems:'center'}}>
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Join
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} sx={{mt:3}}>
+          <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+ onChange={handleChange}
+ name="firstName"
+ type="text"
+ value={formValues.firstName}
+ required
+ label="First Name"
+                  autoFocus
+                />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+                <TextField
+                 onChange={handleChange}
+                 name="lastName"
+                 type="text"
+                 value={formValues.lastName}
+                 required
+                  fullWidth
+                  label="Last Name"
+    
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                 onChange={handleChange}
+                 name="email"
+                 type="email"
+                 value={formValues.email}
+                 required
+                 fullWidth
+                  label="Email Address"
+                 
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  onChange={handleChange}
+                  name="phoneNumber"
+                  type="text"
+                  placeholder="123-456-7891"
+                  value={formValues.phoneNumber}
+                  required
+                  fullWidth
+                  label="Phone Number"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                   onChange={handleChange}
+                   name="username"
+                   type="text"
+                   placeholder="pretzel89"
+                   value={formValues.username}
+                   required
+                  fullWidth
+                  label="Username"
+                  
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                 onChange={handleChange}
+                 name="password"
+                 type="password"
+                 placeholder="create password"
+                 value={formValues.password}
+                  required
+                  fullWidth
+                  label="Password"
+                 
+                />
+              </Grid>
+           
+      
+      
   
     
 
-        <button>Sign Up</button>
-      </form>
+        <Button type="submit" fullWidth sx={{mt:3,mb:2}} variant="contained" endIcon={<LoginIcon/>}>Sign Up</Button>
+       
+        </Grid>
+        </Box>
+        </Box>
+      </Container>
   
-    </div>
+    </ThemeProvider>
   )
 }
 
