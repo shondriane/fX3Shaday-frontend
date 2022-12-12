@@ -11,30 +11,41 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+import {Link} from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect } from 'react';
-import { gridClasses } from '@mui/system';
+import ClassSchedule from './ClassSchedule'
+
+
 
 
 
 const TestComponent = () => {
 const [getClasses,setClasses]= useState([])
+const [reviews, setReviews] = useState([])
  
 const classes = async () => {
 		const response = await axios.get(
 			`${BASE_URL}/classes/`
 		);
         setClasses(response.data)
+        console.log(response.data)
         
     }
 
+ const getReviews = async()=>{
+  const response=await axios.get(`${BASE_URL}/reviews/`)
+  setReviews(response.data)
+  console.log(response.data)
+ }
 	
  useEffect(()=>{
   classes()
+  getReviews()
+
+
  },[])    
 
 function Copyright() {
@@ -86,8 +97,10 @@ function Copyright() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained">Class Schedule</Button>
-              <Button variant="outlined">Schedule Training Session</Button>
+       
+              <Button variant="contained" component={Link} to="/classes">Class Schedule</Button>
+              
+              <Button variant="outlined" component={Link} to="/schedule">Schedule Training Session</Button>
             </Stack>
           </Container>
         </Box>
@@ -95,12 +108,14 @@ function Copyright() {
         {/* End hero unit */}
 
         <Container sx={{ py: 8 }} maxWidth="md">
-<Grid container spaciing={8}>
-     
+<Grid container spacing={8}>
+ 
 
-{getClasses.map((session)=>(
+
+{getClasses?.map((session)=>(
  
     <Grid item key={session.id} xs={12} sm={6}md={6}>
+       
     <Card
     sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
   >
@@ -120,16 +135,71 @@ function Copyright() {
         {session.description}
       </Typography>
     </CardContent>
-    <CardActions>
-      <Button size="small">Add Class</Button>
-      <Button size="small">Schedule Sesssion</Button>
-    </CardActions>
+    
+   
   </Card>
+ 
   </Grid>
-))}
+
+  
+))} 
 
      </Grid>
         </Container>
+        <Box
+          sx={{
+            bgcolor: 'background.paper',
+            pt: 8,
+            pb: 6,
+          }}
+        >
+          <Container maxWidth="sm">
+            <Typography
+              component="h1"
+              variant="h2"
+              align="center"
+              color="text.primary"
+              gutterBottom
+            >
+             Testimonies
+            </Typography>
+           
+         
+          </Container>
+        </Box>
+        <Container sx={{ py: 8 }} maxWidth="md">
+<Grid container spacing={8}>
+ 
+
+
+
+{ reviews?.map((review)=>(
+ 
+    <Grid item key={review.id} xs={12} sm={6}md={6}>
+       
+    <Card
+    sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+  >
+    <CardContent >
+      <Typography sx={{fontSize:14}}>
+       Level  {review.rating} Fun
+      </Typography>
+      <Typography>
+        {review.comment}
+      </Typography>
+    </CardContent>
+    
+   
+  </Card>
+ 
+  </Grid>
+
+  
+))} 
+
+     </Grid>
+        </Container>
+
       </main>
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">

@@ -7,10 +7,27 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import Register from './Register'
+import Client from '../services/Api'
+import axios from 'axios';
+import { useEffect,useState } from 'react';
+import { BASE_URL } from '../globals';
+import {useParams,useNavigate} from 'react-router-dom'
 
 
 const Classes = ({classData}) => {
+    const [selectedClass,setSelectedClass]=useState([])
+    let {class_id}=useParams()
+    let navigate=useNavigate()
 	
+    const session= async()=>{
+        const response=await axios.get(`${BASE_URL}/classes/${class_id}`)
+        setSelectedClass(response.data)
+    }
+
+    useEffect(()=>{
+        session()
+    })
 	return (
 		<Container sx={{py:8}} maxWidth="sm">
             

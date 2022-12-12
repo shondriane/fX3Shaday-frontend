@@ -6,6 +6,7 @@ import { CheckSession } from './services/Auth';
 import Register from './components/Register';
 import SignIn from './components/SignIn'
 import Class from './components/Class'
+import ClassSchedule from './components/ClassSchedule';
 import UpdateProfile from './components/UpdateProfile'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
@@ -69,7 +70,12 @@ function App() {
             path="/classes"
             element={<Class user={user} />}
           />
-         
+          <Route
+            path="/classes/:classes_id"
+            element={<Class user={user} authenticated={authenticated} />}
+          />
+          <Route path="schedule/" 
+          element={<ClassSchedule user={user} authenticated={authenticated}/>}/>
 </Routes>
 
           
