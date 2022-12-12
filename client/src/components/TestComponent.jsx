@@ -22,7 +22,7 @@ import { gridClasses } from '@mui/system';
 
 
 const TestComponent = () => {
-const [getlasses,setClasses]= useState([])
+const [getClasses,setClasses]= useState([])
  
 const classes = async () => {
 		const response = await axios.get(
@@ -31,6 +31,7 @@ const classes = async () => {
         setClasses(response.data)
         
     }
+
 	
  useEffect(()=>{
   classes()
@@ -93,19 +94,21 @@ function Copyright() {
    
         {/* End hero unit */}
 
-        {/* <Container sx={{ py: 8 }} maxWidth="md">
-
+        <Container sx={{ py: 8 }} maxWidth="md">
+<Grid container spaciing={8}>
      
 
 {getClasses.map((session)=>(
+ 
+    <Grid item key={session.id} xs={12} sm={6}md={6}>
     <Card
     sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
   >
     <CardMedia
       component="img"
       sx={{
-        // 16:9
-        pt: '56.25%',
+         
+        pt: '.25%',
       }}
       image={session.picture}
     />
@@ -122,9 +125,11 @@ function Copyright() {
       <Button size="small">Schedule Sesssion</Button>
     </CardActions>
   </Card>
+  </Grid>
 ))}
-     
-        </Container> */}
+
+     </Grid>
+        </Container>
       </main>
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">

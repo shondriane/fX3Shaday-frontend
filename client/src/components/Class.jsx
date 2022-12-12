@@ -5,7 +5,7 @@ import Classes from './Classes'
 
 
 const Class=()=>{
-    const [getClasses,setClasses]= useState({})
+    const [getClasses,setClasses]= useState([])
  
     const classes = async () => {
             const response = await axios.get(
