@@ -19,8 +19,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect } from 'react';
 import { gridClasses } from '@mui/system';
 
+
+
 const TestComponent = () => {
-const [getClasses,setClasses]= useState({})
+const [getlasses,setClasses]= useState([])
  
 const classes = async () => {
 		const response = await axios.get(
@@ -32,7 +34,7 @@ const classes = async () => {
 	
  useEffect(()=>{
   classes()
- })    
+ },[])    
 
 function Copyright() {
   return (
@@ -72,7 +74,7 @@ function Copyright() {
               color="text.primary"
               gutterBottom
             >
-              Get Results You Can See and Feel
+             FX3 Shaday
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
               In-Person and Online personal training with Courtney Martin
@@ -88,10 +90,41 @@ function Copyright() {
             </Stack>
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
-         
-        </Container>
+   
+        {/* End hero unit */}
+
+        {/* <Container sx={{ py: 8 }} maxWidth="md">
+
+     
+
+{getClasses.map((session)=>(
+    <Card
+    sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+  >
+    <CardMedia
+      component="img"
+      sx={{
+        // 16:9
+        pt: '56.25%',
+      }}
+      image={session.picture}
+    />
+    <CardContent sx={{ flexGrow: 1 }}>
+      <Typography gutterBottom variant="h5" component="h2">
+        {session.class}
+      </Typography>
+      <Typography>
+        {session.description}
+      </Typography>
+    </CardContent>
+    <CardActions>
+      <Button size="small">Add Class</Button>
+      <Button size="small">Schedule Sesssion</Button>
+    </CardActions>
+  </Card>
+))}
+     
+        </Container> */}
       </main>
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
@@ -102,7 +135,7 @@ function Copyright() {
           color="text.secondary"
           component="p"
         >
-          Get Fit, Be Fabulous, and Have Fun!
+          Get Fit, Be Fabulous and Have Fun!
         </Typography>
         <Copyright />
       </Box>

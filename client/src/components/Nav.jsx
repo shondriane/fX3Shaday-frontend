@@ -30,6 +30,7 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
     <nav>
       
         <Link to="/">Home</Link>
+        <Link to="/classes">Classes</Link>
         <Link to="/sign-in">Login</Link>
         <Link to="/register">Join</Link>
        
