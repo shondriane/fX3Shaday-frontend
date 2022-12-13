@@ -15,16 +15,27 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
           <Link to="/">Home</Link>
           <Link to={`/profile/${user.id}`}>Profile</Link>
       <Link to={`/myClasses/${user.id}`}>MyClasses</Link>
+      <Link to={`/addClass/${user.id}`}>AddClasses</Link>
           <Link onClick={handleLogOut} to="/">
             Sign Out
           </Link>
-        
-        
-      
       
       </nav>
     )
   }
+
+//   if (user && user.id===25){
+//     masterUser=(
+//         <nav>
+//                <Link to="/">Home</Link>
+//           <Link to={`/profile/${user.id}`}>Profile</Link>
+//       <Link to="/addClass">AddClasses</Link>
+//           <Link onClick={handleLogOut} to="/">
+//             Sign Out
+//           </Link>
+//         </nav>
+//     )
+//   }
 
   const publicOptions = (
     <nav>
@@ -39,7 +50,7 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
   )
 
   return (
-    <div>{authenticated && user ? authenticatedOptions : publicOptions}</div>
+    <div>{authenticated && user ? authenticatedOptions  : publicOptions}</div>
   )
 }
 

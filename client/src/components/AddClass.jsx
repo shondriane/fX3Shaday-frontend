@@ -1,9 +1,16 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { BASE_URL } from '../globals'
-import axios from 'axios'
-import { useEffect } from 'react'
-
+import { useNavigate } from 'react-router-dom'
+import LoginIcon from '@mui/icons-material/Login';
+import Button   from '@mui/material/Button'
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { addClasses } from '../services/Auth';
 
 const AddClass= ({user,authenticate}) => {
     const navigate = useNavigate()
@@ -31,7 +38,7 @@ const AddClass= ({user,authenticate}) => {
     useEffect(()=>{
 getClasses()
     },[user])
-
+    
     const handleChange = (e) => {
       setFormValues({ ...formValues, [e.target.name]: e.target.value })
      
@@ -39,11 +46,8 @@ getClasses()
   
     const handleSubmit = async (e) => {
       e.preventDefault()
-        await axios.post(`${BASE_URL}/userClasses/user/${userId}/classes/`,formValues)
-        .then((response)=>{
-            return response
-        }).catch((error)=>{
-            console.error(error)
+        await addClasses({
+            ...formValues
         })
         setFormValues(initialFormValues)
         navigate('/schedule')
@@ -51,132 +55,111 @@ getClasses()
     }
 
     return (
-      <div>
-          <form onSubmit={handleSubmit}>
-				<h1>Creating New Activity</h1>
-				<div>
-					<label htmlFor="name"> Activity Name: </label>
-					<input
-						type="text"
-						name="name"
-						onChange={handleChange}
-						value={formValues.name}
-					/>
-				</div>
-				<div>
-					<label htmlFor="categoryId">Add Category: </label>
-					<select
-						name="categoryId"
-						onChange={handleChange}
-						value={formValues.categoryId}
-					>
-						<option defaultValue="select category">
-							Select Category
-						</option>
-						{categories.map((category) => (
-							<option key={category.id} value={category.id}>
-								{category.name}
-							</option>
-						))}
-					</select>
-				</div>
-				<div>
-					<label>Date: </label>
-					<input
-						type="date"
-						name="date"
-						onChange={handleChange}
-						value={formValues.date}
-					/>
-				</div>
-				<div>
-					<label>Time: </label>
-					<input
-						type="time"
-						name="time"
-						onChange={handleChange}
-						value={formValues.time}
-					/>
-				</div>
-				<div>
-					<label>Street Address:</label>
-					<input
-						type="text"
-						name="streetAddress"
-						onChange={handleChange}
-						value={formValues.streetAddress}
-					/>
-				</div>
-				<div>
-					<label>Street Address 2: </label>
-					<input
-						type="text"
-						name="streetAddress2"
-						onChange={handleChange}
-						value={formValues.streetAddress2}
-					/>
-				</div>
-				<div>
-					<label>City: </label>
-					<input
-						type="text"
-						name="city"
-						onChange={handleChange}
-						value={formValues.city}
-					/>
-				</div>
-				<div>
-					<label>State: </label>
-					<input
-						type="text"
-						name="state"
-						onChange={handleChange}
-						value={formValues.state}
-					/>
-				</div>
-				<div>
-					<label>Zip Code: </label>
-					<input
-						type="number"
-						name="zipCode"
-						onChange={handleChange}
-						value={formValues.zipCode}
-					/>
-				</div>
-				<div>
-					<label>Country: </label>
-					<input
-						type="text"
-						name="country"
-						onChange={handleChange}
-						value={formValues.country}
-					/>
-				</div>
-				<div>
-					<label>Image URL: </label>
-					<input
-						type="text"
-						name="image"
-						onChange={handleChange}
-						value={formValues.image}
-					/>
-				</div>
-				<div>
-					<label htmlFor="description">Description: </label>
-					<div>
-						<textarea
-							name="description"
-							cols="30"
-							rows="5"
-							onChange={handleChange}
-							value={formValues.description}
-						></textarea>
-					</div>
-				</div>
+        <Container component="main" maxWidth="xs" >
+        <CssBaseline/>
+        <Box sx={{marginTop:8,display:'flex',flexDirection:'column',alignItems:'center'}}>
+       
+          <Typography component="h1" variant="h5">
+            Add New Class
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} sx={{mt:3}}>
+          <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+ onChange={handleChange}
+ name="class"
+ type="text"
+ value={formValues.class}
+ required
+ fullWidth
+ label="Class"
+                  autoFocus
+                />
+        </Grid>
+        <Grid item xs={12} >
+                <TextField
+                 onChange={handleChange}
+                 name="description"
+                 type="text"
+                 value={formValues.description}
+                 required
+                  fullWidth
+                  label="Description"
+    
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                 onChange={handleChange}
+                 name="picture"
+                 type="text"
+                 value={formValues.picture}
+                 required
+                 fullWidth
+                  label="Image URL"
+                 
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  onChange={handleChange}
+                  name="time"
+                  type="time"
+                  placeholder="123-456-7891"
+                  value={formValues.time}
+                  required
+                  fullWidth
+                
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                   onChange={handleChange}
+                   name="date"
+                   type="date"
+                   value={formValues.date}
+                   required
+                  fullWidth
+               
+                  
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                 onChange={handleChange}
+                 name="capacity"
+                 type="integer"
+                 value={formValues.capacity}
+                  required
+                  fullWidth
+                  label="Capacity"
+                 
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                 onChange={handleChange}
+                 name="cost"
+                 type="integer"
+                 value={formValues.cost}
+                  required
+                  fullWidth
+                  label="Cost"
+                 
+                />
+              </Grid>
+           
+      
+      
+  
+    
 
-				<button>Submit</button>
-			</form>
-      </div>
+        <Button type="submit" fullWidth sx={{mt:3,mb:2}} variant="contained" endIcon={<LoginIcon/>}>Submit</Button>
+       
+        </Grid>
+        </Box>
+        </Box>
+      </Container>
     )
   }
   

@@ -10,6 +10,7 @@ import ClassSchedule from './components/ClassSchedule';
 import UpdateProfile from './components/UpdateProfile'
 import MyClasses from './components/MyClasses'
 import Contact from './components/Contact'
+import AddClass from './components/AddClass'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
 
@@ -84,6 +85,8 @@ function App() {
           element={<MyClasses user={user} authenticated={authenticated}/>}/>
            <Route path="/contact/" 
           element={<Contact user={user} />}/>
+          <Route path="/addClass/:user_id" 
+          element={<AddClass user={user}authenticated={authenticated} />}/>
 </Routes>
 
           

@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import Grid from '@mui/material/Grid';
+import LoginIcon from '@mui/icons-material/Login';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -96,14 +97,7 @@ import Button   from '@mui/material/Button'
                 paragraph
               />
            
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Send Message
-              </Button>
+           <Button type="submit" fullWidth sx={{mt:3,mb:2}} variant="contained" endIcon={<LoginIcon/>}>Submit</Button>
          
             
              

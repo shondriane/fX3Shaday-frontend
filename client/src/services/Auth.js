@@ -27,3 +27,12 @@ export const CheckSession = async()=>{
      throw error
     }
 }
+
+export const addClasses = async(data)=>{
+    try{
+        const res = await Client.post('/classes/')
+        return res.data
+    }catch(error){
+        throw error
+    }
+}
