@@ -26,14 +26,12 @@ const UpdateClass = ({ user }) => {
 	const [classes,setClasses]=useState([])
 	
 
-	const getClasses=async()=>{
-        const response=await axios.get(`${BASE_URL}/classes`)
+	const getClassesById=async()=>{
+        const response=await axios.get(`${BASE_URL}/classes/${classId}`)
         setClasses(response.data)
+		setFormValues({...response.data})
     }
   
-    useEffect(()=>{
-getClasses()
-    },[user])
 
     const handleChange = (e) => {
       setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -42,16 +40,19 @@ getClasses()
   
     const handleSubmit = async (e) => {
       e.preventDefault()
-        await Client.put(`${BASE_URL}/classes/${classId}`,formValues)
+       const updateClass= await Client.put(`${BASE_URL}/classes/${classId}`,formValues)
         .then((response)=>{
             return response
         }).catch((error)=>{
             console.error(error)
         })
         setFormValues(initialFormValues)
-        navigate('/schedule')
+        navigate('/')
       
     }
+	useEffect(()=>{
+		getClassesById()
+			},[user])
 
 	return (
 		<Container component="main" 

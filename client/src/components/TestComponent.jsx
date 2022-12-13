@@ -17,8 +17,10 @@ import {Link} from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect } from 'react';
 import ClassSchedule from './ClassSchedule'
-
-
+import DeleteIcon from '@mui/icons-material/Delete'
+import AddCircleIcon from '@mui/icons-material/AddCircle'
+import Client from '../services/Api';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -26,6 +28,7 @@ const TestComponent = () => {
 const [getClasses,setClasses]= useState([])
 const [reviews, setReviews] = useState([])
 const [show,setShow]=useState(false)
+const navigate = useNavigate()
  
 const classes = async () => {
 		const response = await axios.get(
@@ -48,6 +51,21 @@ const classes = async () => {
 
 
  },[])    
+
+ const handleDeleteClick = async (e,id) => {
+  await Client.delete(`${BASE_URL}/classes/${id}`,{
+    classId:id
+  });
+navigate(`/`)
+};
+
+const handleClick=async(e,id)=>{
+setShow(true)
+}
+
+const handleUpdateClick = () => {
+  navigate(`/`);
+};
 
 function Copyright() {
   return (
@@ -135,6 +153,39 @@ function Copyright() {
       <Typography>
         {session.description}
       </Typography>
+      <CardActions>
+     
+          
+	
+            <Button  component={Link} to={`/updateClass/${session.id}`} size="small"> Update</Button>
+            <Button onClick={(e)=>handleClick(e,session.id)}size="small"> Delete </Button>
+           </CardActions>
+           { show &&(
+					 <div id ="id01" className="modal">
+                    
+                     <form className="modal-content">
+                         <div className="container">
+<h1>
+Delete Class
+</h1>
+<p>
+Are you sure you want to delete the Class?
+</p>
+                        
+                         
+                   <div class="clearfix">
+                   <Button variant="contained" onClick={handleUpdateClick}>
+                         cancel
+                     </Button>
+                     <Button variant="outlined"  onClick={(e)=>handleDeleteClick(e,session.id)}>
+                         Delete 
+                     </Button>
+                    
+                     </div>
+                 </div>
+                 </form>
+                 </div>
+                )}
     </CardContent>
     
    

@@ -87,6 +87,8 @@ function App() {
           element={<Contact user={user} />}/>
           <Route path="/addClass/:user_id" 
           element={<AddClass user={user}authenticated={authenticated} />}/>
+            <Route path="/updateClass/:class_id" 
+          element={<AddClass user={user}authenticated={authenticated} />}/>
 </Routes>
 
           
