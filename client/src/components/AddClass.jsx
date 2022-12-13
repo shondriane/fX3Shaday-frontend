@@ -10,7 +10,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { addClasses } from '../services/Auth';
+import Client from '../services/Api';
 
 const AddClass= ({user,authenticate}) => {
     const navigate = useNavigate()
@@ -38,7 +38,7 @@ const AddClass= ({user,authenticate}) => {
     useEffect(()=>{
 getClasses()
     },[user])
-    
+
     const handleChange = (e) => {
       setFormValues({ ...formValues, [e.target.name]: e.target.value })
      
@@ -46,8 +46,11 @@ getClasses()
   
     const handleSubmit = async (e) => {
       e.preventDefault()
-        await addClasses({
-            ...formValues
+        await Client.post(`${BASE_URL}/classes/`,formValues)
+        .then((response)=>{
+            return response
+        }).catch((error)=>{
+            console.error(error)
         })
         setFormValues(initialFormValues)
         navigate('/schedule')
