@@ -5,6 +5,11 @@ import { BASE_URL } from '../globals'
 import { useEffect } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
+import {List,ListItem,ListItemText} from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
+
 
 const ClassSchedule = ({user}) => {
     const [getClasses,setClasses]= useState([])
@@ -26,7 +31,9 @@ console.log(user.id)
       
        },[user]) 
 
-     
+      
+
+
 
        const handleSubmit = async (e,id) => {
         e.preventDefault()
@@ -46,17 +53,37 @@ console.log(user.id)
       }
     return (
       <div>
+      <Box
+          sx={{
+            bgcolor: 'background.paper',
+            pt: 8,
+            pb: 6,
+          }}
+        >
+             <Typography
+              component="h1"
+              variant="h2"
+              align="center"
+              color="text.primary"
+              gutterBottom
+            >
+            Upcoming Class Schedule
+            </Typography>
+        <List sx={{marginTop: 15,marginLeft:25,width:500, background:"white"}}>
+        {getClasses?.map((session)=>( 
+            <ListItem divider>
+            
         
-            <ul>
-            {getClasses?.map((session)=>( 
-        
-            <li key={session.id}>
+            <ListItemText key={session.id} >
                {session.class} {session.time} ${session.cost}.00 <AddIcon onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
-                </li> 
+                </ListItemText> 
                 
            
-         ))}
-         </ul> 
+        
+         </ListItem>
+          ))}
+         </List>
+         </Box>
       </div>
     )
   }
