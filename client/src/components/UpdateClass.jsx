@@ -7,109 +7,161 @@ import Client from '../services/Api';
 import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
 
-const UpdateProfile = ({  }) => {
-	const { user_id } = useParams();
-    const userId = parseInt(user_id)
+const UpdateClass = ({ user }) => {
+	const { class_id } = useParams();
+    const classId = parseInt(class_id)
 	let navigate = useNavigate();
 	const initialFormValues = {
-		userId: userId,
-		firstName: '',
-		lastName: '',
-		email: '',
-		phoneNumber: '',
+		class:'',
+		description:'',
+		picture:'',
+		time:'',
+		date:'',
+		capacity:'',
+		cost:''
 		
 	};
 
 	const [formValues, setFormValues] = useState(initialFormValues);
-    const [user,setUser]=useState([])
+	const [classes,setClasses]=useState([])
 	
 
-	const getUserById = async () => {
-		const user = await axios.get(
-			`${BASE_URL}/users/${user_id}`
-		);
-        setUser(user.data)
-		setFormValues({...user.data});
-       
-		
-	};
-	
+	const getClasses=async()=>{
+        const response=await axios.get(`${BASE_URL}/classes`)
+        setClasses(response.data)
+    }
+  
+    useEffect(()=>{
+getClasses()
+    },[user])
 
-	const handleChange = (event) => {
-		setFormValues({
-			...formValues,
-			[event.target.name]: event.target.value
-		});
-	};
-
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-
-		const updateUser = await Client.put(
-			`${BASE_URL}/users/${user_id}`,
-			formValues
-		)
-			.then((response) => {
-				return response;
-			})
-			.catch((error) => {
-				throw error;
-			});
-
-		setFormValues(initialFormValues);
-
-		navigate(`/profile/${user_id}`);
-	};
-
-	useEffect(() => {
-		getUserById();
-	}, []);
+    const handleChange = (e) => {
+      setFormValues({ ...formValues, [e.target.name]: e.target.value })
+     
+    }
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault()
+        await Client.put(`${BASE_URL}/classes/${classId}`,formValues)
+        .then((response)=>{
+            return response
+        }).catch((error)=>{
+            console.error(error)
+        })
+        setFormValues(initialFormValues)
+        navigate('/schedule')
+      
+    }
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<h1>Update Profile</h1>
-				<div>
-					<label htmlFor="firstName">First Name:</label>
-					<input
-						onChange={handleChange}
-						name="firstName"
-						type="text"
-						value={formValues.firstName}
-					/>
-				</div>
-				<div>
-					<label htmlFor="lastName">Last Name:</label>
-					<input
-						onChange={handleChange}
-						name="lastName"
-						type="text"
-						value={formValues.lastName}
-					/>
-				</div>
-				<div>
-					<label htmlFor="email">Email:</label>
-					<input
-						onChange={handleChange}
-						name="email"
-						type="email"
-						value={formValues.email}
-					/>
-				</div>
-				<div>
-					<label htmlFor="phoneNumber">Phone Number:</label>
-					<input
-						onChange={handleChange}
-						name="phoneNumber"
-						type="text"
-						value={formValues.phoneNumber}
-					/>
-				</div>
-				
-				<Button variant="contained" endIcon={<SendIcon/>}>Submit</Button>
-			</form>
-		</div>
+		<Container component="main" 
+		maxWidth="xs" >
+        <CssBaseline/>
+        <Box sx={{marginTop:8,display:'flex',flexDirection:'column',alignItems:'center'}}>
+       
+          <Typography component="h1" variant="h5">
+            Add New Class
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} sx={{mt:3}}>
+          <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+ onChange={handleChange}
+ name="class"
+ type="text"
+ value={formValues.class}
+ required
+ fullWidth
+ label="Class"
+                  autoFocus
+                />
+        </Grid>
+        <Grid item xs={12} >
+                <TextField
+                 onChange={handleChange}
+                 name="description"
+                 type="text"
+                 value={formValues.description}
+                 required
+                  fullWidth
+                  label="Description"
+    
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                 onChange={handleChange}
+                 name="picture"
+                 type="text"
+                 value={formValues.picture}
+                 required
+                 fullWidth
+                  label="Image URL"
+                 
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  onChange={handleChange}
+                  name="time"
+                  type="time"
+                  placeholder="123-456-7891"
+                  value={formValues.time}
+                  required
+                  fullWidth
+                
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                   onChange={handleChange}
+                   name="date"
+                   type="date"
+                   value={formValues.date}
+                   required
+                  fullWidth
+               
+                  
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                 onChange={handleChange}
+                 name="capacity"
+                 type="integer"
+                 value={formValues.capacity}
+                  required
+                  fullWidth
+                  label="Capacity"
+                 
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                 onChange={handleChange}
+                 name="cost"
+                 type="integer"
+                 value={formValues.cost}
+                  required
+                  fullWidth
+                  label="Cost"
+                 
+                />
+              </Grid>
+           
+      
+      
+  
+    
+
+        <Button type="submit" fullWidth sx={{mt:3,mb:2}} variant="contained" endIcon={<LoginIcon/>}>Submit</Button>
+       
+        </Grid>
+        </Box>
+        </Box>
+      </Container>
+    
 	);
 };
 
-export default UpdateProfile;
+export default UpdateClass;
