@@ -3,7 +3,7 @@ import '../index.css'
 import {Screen} from '../assets/screen'
 import {Link} from 'react-router-dom'
 
-function Contact(){
+ Contact=()=>{
 
 
     return(
