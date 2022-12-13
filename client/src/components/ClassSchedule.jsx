@@ -47,7 +47,7 @@ console.log(user.id)
           }).catch((error)=>{
               console.error(error)
           })
-         navigate(`/userclasses/user/${user.id}`)
+         navigate(`/myClasses/${user.id}`)
          
         
       }

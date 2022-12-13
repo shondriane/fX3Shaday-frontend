@@ -25,6 +25,7 @@ import ClassSchedule from './ClassSchedule'
 const TestComponent = () => {
 const [getClasses,setClasses]= useState([])
 const [reviews, setReviews] = useState([])
+const [show,setShow]=useState(false)
  
 const classes = async () => {
 		const response = await axios.get(
@@ -98,7 +99,7 @@ function Copyright() {
               justifyContent="center"
             >
        
-              <Button variant="contained" component={Link} to="/classes">Class Schedule</Button>
+              <Button variant="contained" component={Link} to="/contact">Contact Me</Button>
               
               <Button variant="outlined" component={Link} to="/schedule">Schedule Training Session</Button>
             </Stack>
@@ -146,6 +147,8 @@ function Copyright() {
 
      </Grid>
         </Container>
+
+        
         <Box
           sx={{
             bgcolor: 'background.paper',
@@ -174,7 +177,7 @@ function Copyright() {
 
 
 { reviews?.map((review)=>(
- 
+
     <Grid item key={review.id} xs={12} sm={6}md={6}>
        
     <Card
@@ -194,7 +197,7 @@ function Copyright() {
  
   </Grid>
 
-  
+ 
 ))} 
 
      </Grid>

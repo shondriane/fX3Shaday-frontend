@@ -9,6 +9,7 @@ import Class from './components/Class'
 import ClassSchedule from './components/ClassSchedule';
 import UpdateProfile from './components/UpdateProfile'
 import MyClasses from './components/MyClasses'
+import Contact from './components/Contact'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
 
@@ -42,6 +43,7 @@ function App() {
           user={user}
           handleLogOut={handleLogOut}
         />
+        <Contact/>
        
       </header>
       <main>
@@ -79,6 +81,8 @@ function App() {
           element={<ClassSchedule user={user} authenticated={authenticated}/>}/>
           <Route path="/myClasses/:user_id" 
           element={<MyClasses user={user} authenticated={authenticated}/>}/>
+           <Route path="/myClasses/:user_id" 
+          element={<Contact user={user} />}/>
 </Routes>
 
           
