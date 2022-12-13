@@ -63,7 +63,7 @@ const UpdateProfile = ({  }) => {
 
 	useEffect(() => {
 		getUserById();
-	}, []);
+	}, [user]);
 
 	return (
 		<div>

@@ -11,6 +11,7 @@ import UpdateProfile from './components/UpdateProfile'
 import MyClasses from './components/MyClasses'
 import Contact from './components/Contact'
 import AddClass from './components/AddClass'
+import UpdateClass from './components/UpdateClass'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
 
@@ -50,7 +51,7 @@ function App() {
       
       <main>
 <Routes>
-  <Route path="/" element={<Test/>}/>
+  <Route path="/" element={<Test/>} user={user}/>
   <Route path="/sign-in" 
   element={<SignIn 
     setUser={setUser} 
@@ -88,7 +89,7 @@ function App() {
           <Route path="/addClass/:user_id" 
           element={<AddClass user={user}authenticated={authenticated} />}/>
             <Route path="/updateClass/:class_id" 
-          element={<AddClass user={user}authenticated={authenticated} />}/>
+          element={<UpdateClass user={user}authenticated={authenticated} />}/>
 </Routes>
 
           

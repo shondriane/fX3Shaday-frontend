@@ -4,14 +4,21 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { BASE_URL } from '../globals';
 import Client from '../services/Api';
-import SendIcon from '@mui/icons-material/Send';
+import LoginIcon from '@mui/icons-material/Login';
 import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 const UpdateClass = ({ user }) => {
 	const { class_id } = useParams();
     const classId = parseInt(class_id)
 	let navigate = useNavigate();
 	const initialFormValues = {
+		id:'class?.id',
 		class:'',
 		description:'',
 		picture:'',
@@ -52,7 +59,7 @@ const UpdateClass = ({ user }) => {
     }
 	useEffect(()=>{
 		getClassesById()
-			},[user])
+			},[])
 
 	return (
 		<Container component="main" 
@@ -61,7 +68,7 @@ const UpdateClass = ({ user }) => {
         <Box sx={{marginTop:8,display:'flex',flexDirection:'column',alignItems:'center'}}>
        
           <Typography component="h1" variant="h5">
-            Add New Class
+            Update Class Details
           </Typography>
           <Box component="form" onSubmit={handleSubmit} sx={{mt:3}}>
           <Grid container spacing={2}>
@@ -71,9 +78,9 @@ const UpdateClass = ({ user }) => {
  name="class"
  type="text"
  value={formValues.class}
- required
  fullWidth
- label="Class"
+ required
+ label="class"
                   autoFocus
                 />
         </Grid>

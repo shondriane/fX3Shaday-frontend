@@ -21,6 +21,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import Client from '../services/Api';
 import { useNavigate } from 'react-router-dom';
+import ClearIcon from '@mui/icons-material/Clear';
 
 
 
@@ -56,7 +57,7 @@ const classes = async () => {
   await Client.delete(`${BASE_URL}/classes/${id}`,{
     classId:id
   });
-navigate(`/`)
+navigate(`/classes`)
 };
 
 const handleClick=async(e,id)=>{
@@ -64,7 +65,7 @@ setShow(true)
 }
 
 const handleUpdateClick = () => {
-  navigate(`/`);
+  navigate(`/classes`);
 };
 
 function Copyright() {
@@ -174,10 +175,10 @@ Are you sure you want to delete the Class?
                         
                          
                    <div class="clearfix">
-                   <Button variant="contained" onClick={handleUpdateClick}>
+                   <Button variant="contained" endIcon = {<ClearIcon/>} onClick={handleUpdateClick}>
                          cancel
                      </Button>
-                     <Button variant="outlined"  onClick={(e)=>handleDeleteClick(e,session.id)}>
+                     <Button variant="outlined"  startIcon={<DeleteIcon/>} onClick={(e)=>handleDeleteClick(e,session.id)}>
                          Delete 
                      </Button>
                     
