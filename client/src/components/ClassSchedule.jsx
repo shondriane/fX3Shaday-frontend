@@ -15,13 +15,13 @@ const ClassSchedule = ({user}) => {
     const [getClasses,setClasses]= useState([])
    
 let navigate=useNavigate()
-console.log(user.id)
+
     const classes = async () => {
 		const response = await axios.get(
 			`${BASE_URL}/classes/`
 		);
         setClasses(response.data)
-        console.log(response.data)
+       
         
     }
     useEffect(()=>{
@@ -75,7 +75,7 @@ console.log(user.id)
             
         
             <ListItemText key={session.id} >
-               {session.class} {session.time} ${session.cost}.00 <AddIcon onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
+               {session.class} {session.date} {session.time} ${session.cost}.00 <AddIcon onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
                 </ListItemText> 
                 
            

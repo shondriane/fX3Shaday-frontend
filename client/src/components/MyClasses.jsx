@@ -11,23 +11,26 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Box from '@mui/material/Box';
-import {Link} from 'react-router-dom';
+import {Link,useNavigate,usParams} from 'react-router-dom';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import { BASE_URL } from '../globals';
-
+import AddReview from './AddReview';
 
 const MyClasses=({user})=>{
+    const navigate=useNavigate()
  const [currentClasses,setClasses]= useState([])
 
  const schedule= async()=>{
     const response=await axios.get(`${BASE_URL}/userclasses/user/${user.id}`)
     setClasses(response.data[0].class_list)
-    console.log(response.data[0].class_list)
+   
    
 }
+const handleClick = (e,id) => {
+    navigate(`/addReview/${id}`);
+};
 
-console.log(currentClasses.class_list)
  useEffect(()=>{
 schedule()
  },[])
@@ -60,7 +63,7 @@ schedule()
             {schedule.time}{schedule.date}
            </Typography>
            <CardActions>
-           <IconButton style={{color:"red"}}component={Link} to='review'>
+           <IconButton key ={schedule.id}onClick={(e)=>handleClick(e,schedule.id)}style={{color:"red"}}>
 <FavoriteIcon/>
            </IconButton>
          

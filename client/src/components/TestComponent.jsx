@@ -31,19 +31,20 @@ const [reviews, setReviews] = useState([])
 const [show,setShow]=useState(false)
 const navigate = useNavigate()
  
+const random = []
 const classes = async () => {
 		const response = await axios.get(
 			`${BASE_URL}/classes/`
 		);
         setClasses(response.data)
-        console.log(response.data)
+      
         
     }
 
  const getReviews = async()=>{
   const response=await axios.get(`${BASE_URL}/reviews/`)
   setReviews(response.data)
-  console.log(response.data)
+  
  }
 	
  useEffect(()=>{
@@ -52,6 +53,21 @@ const classes = async () => {
 
 
  },[])    
+
+ const randomReviews=(display,random)=>{
+
+
+display.forEach((ele)=>{
+  
+  if(ele.comment!==null){
+    random.push(ele)
+  }
+ 
+})
+
+}
+randomReviews(reviews,random)
+
 
  const handleDeleteClick = async (e,id) => {
   await Client.delete(`${BASE_URL}/classes/${id}`,{
@@ -228,7 +244,7 @@ Are you sure you want to delete the Class?
 
 
 
-{ reviews?.map((review)=>(
+{ random?.map((review)=>(
 
     <Grid item key={review.id} xs={12} sm={6}md={6}>
        

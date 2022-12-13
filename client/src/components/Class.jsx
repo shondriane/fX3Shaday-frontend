@@ -12,7 +12,7 @@ const Class=()=>{
                 `${BASE_URL}/classes/`
             );
             setClasses(response.data)
-            console.log(response.data)
+            
             
         }
         

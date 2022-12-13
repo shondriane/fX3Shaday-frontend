@@ -29,7 +29,7 @@ const SignIn = ({ toggleAuthenticated, setUser }) => {
 
     if (formValues.email === '' || formValues.password === '') {
       setAuth(false)
-      console.log(formValues.email, formValues.password)
+     
     } else {
       const payload = await SignInUser(formValues)
       setFormValues({ email: '', password: '' })

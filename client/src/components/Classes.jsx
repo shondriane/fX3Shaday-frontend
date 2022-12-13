@@ -21,7 +21,7 @@ const Classes = ({classData}) => {
     let navigate=useNavigate()
 	
     const session= async()=>{
-        const response=await axios.get(`${BASE_URL}/classes/${class_id}`)
+        const response=await axios.get(`${BASE_URL}/classes/${classData.id}`)
         setSelectedClass(response.data)
     }
 

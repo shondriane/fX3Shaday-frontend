@@ -1,56 +1,57 @@
 import { Link } from 'react-router-dom'
 import '../styling/Nav.css'
 
-const Nav = ({ authenticated, user, handleLogOut }) => {
+const Nav = ({ user, handleLogOut,authenticated }) => {
 
 
 
-
+let navOptions
   
-  let authenticatedOptions
-  if (user) {
-    authenticatedOptions = (
+
+if (user && user.id===36){
+    navOptions=(
+          <nav>
+                 <Link to="/">Home</Link>
+            <Link to={`/profile/${user.id}`}>Profile</Link>
+        <Link to="/addClass/:user_id">AddClasses</Link>
+            <Link onClick={handleLogOut} to="/">
+              Sign Out
+            </Link>
+          </nav>
+      )
+    }
+else if(user){
+    navOptions=(
       <nav>
         
           <Link to="/">Home</Link>
           <Link to={`/profile/${user.id}`}>Profile</Link>
       <Link to={`/myClasses/${user.id}`}>MyClasses</Link>
-      <Link to={`/addClass/${user.id}`}>AddClasses</Link>
           <Link onClick={handleLogOut} to="/">
             Sign Out
           </Link>
       
       </nav>
     )
+}
+
+  else{
+  navOptions=(
+        <nav>
+          
+            <Link to="/">Home</Link>
+            <Link to="/classes">Classes</Link>
+            <Link to="/sign-in">Login</Link>
+            <Link to="/register">Join</Link>
+           
+          
+        </nav>
+      )
+
   }
 
-//   if (user && user.id===25){
-//     masterUser=(
-//         <nav>
-//                <Link to="/">Home</Link>
-//           <Link to={`/profile/${user.id}`}>Profile</Link>
-//       <Link to="/addClass">AddClasses</Link>
-//           <Link onClick={handleLogOut} to="/">
-//             Sign Out
-//           </Link>
-//         </nav>
-//     )
-//   }
-
-  const publicOptions = (
-    <nav>
-      
-        <Link to="/">Home</Link>
-        <Link to="/classes">Classes</Link>
-        <Link to="/sign-in">Login</Link>
-        <Link to="/register">Join</Link>
-       
-      
-    </nav>
-  )
-
   return (
-    <div>{authenticated && user ? authenticatedOptions  : publicOptions}</div>
+    <div>{navOptions}</div>
   )
 }
 

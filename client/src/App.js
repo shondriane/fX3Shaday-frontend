@@ -14,6 +14,7 @@ import AddClass from './components/AddClass'
 import UpdateClass from './components/UpdateClass'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
+import AddReview from './components/AddReview';
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -70,7 +71,7 @@ function App() {
           />
     <Route
             path="/update-profile/:user_id"
-            element={<UpdateProfile user={user} />}
+            element={<UpdateProfile user={user} handleLogOut={handleLogOut}/>}
           />
            <Route
             path="/classes"
@@ -90,6 +91,8 @@ function App() {
           element={<AddClass user={user}authenticated={authenticated} />}/>
             <Route path="/updateClass/:class_id" 
           element={<UpdateClass user={user}authenticated={authenticated} />}/>
+           <Route path="/addReview/:class_id" 
+          element={<AddReview user={user}authenticated={authenticated} />}/>
 </Routes>
 
           

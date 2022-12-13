@@ -10,7 +10,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle'
 import ClearIcon from '@mui/icons-material/Clear';
 import '../index.css';
 
-const Profile = ({ user }) => {
+const Profile = ({ user,handleLogOut }) => {
 	let navigate = useNavigate();
 	const { user_id } = useParams();
 	const userId = parseInt(user_id);
@@ -27,6 +27,8 @@ const Profile = ({ user }) => {
 
 	const handleDeleteClick = async () => {
             await Client.delete(`${BASE_URL}/users/${userId}`);
+            localStorage.clear()
+            handleLogOut()
 		    navigate(`/`)
 	};
 

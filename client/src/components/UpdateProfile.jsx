@@ -45,7 +45,7 @@ const UpdateProfile = ({  }) => {
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
-		const updateUser = await Client.put(
+		await Client.put(
 			`${BASE_URL}/users/${user_id}`,
 			formValues
 		)
@@ -59,11 +59,12 @@ const UpdateProfile = ({  }) => {
 		setFormValues(initialFormValues);
 
 		navigate(`/profile/${user_id}`);
+	
 	};
 
 	useEffect(() => {
 		getUserById();
-	}, [user]);
+	}, []);
 
 	return (
 		<div>
@@ -106,7 +107,7 @@ const UpdateProfile = ({  }) => {
 					/>
 				</div>
 				
-				<Button variant="contained" endIcon={<SendIcon/>}>Submit</Button>
+				<Button variant="contained"  onClick={handleSubmit} endIcon={<SendIcon/>}>Submit</Button>
 			</form>
 		</div>
 	);
