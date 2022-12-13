@@ -43,9 +43,10 @@ function App() {
           user={user}
           handleLogOut={handleLogOut}
         />
-        <Contact/>
+       
        
       </header>
+      
       <main>
 <Routes>
   <Route path="/" element={<Test/>}/>
@@ -81,7 +82,7 @@ function App() {
           element={<ClassSchedule user={user} authenticated={authenticated}/>}/>
           <Route path="/myClasses/:user_id" 
           element={<MyClasses user={user} authenticated={authenticated}/>}/>
-           <Route path="/myClasses/:user_id" 
+           <Route path="/contact/" 
           element={<Contact user={user} />}/>
 </Routes>
 
