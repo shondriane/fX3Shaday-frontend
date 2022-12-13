@@ -107,7 +107,7 @@ const UpdateProfile = ({  }) => {
 					/>
 				</div>
 				
-				<Button variant="contained"  onClick={handleSubmit} endIcon={<SendIcon/>}>Submit</Button>
+				<Button variant="contained" type="submit" onClick={handleSubmit} endIcon={<SendIcon/>}>Submit</Button>
 			</form>
 		</div>
 	);
