@@ -6,6 +6,12 @@ import { BASE_URL } from '../globals';
 import Client from '../services/Api';
 import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
+import { CssBaseline } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
 const UpdateProfile = ({  }) => {
 	const { user_id } = useParams();
@@ -67,49 +73,66 @@ const UpdateProfile = ({  }) => {
 	}, []);
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<h1>Update Profile</h1>
-				<div>
-					<label htmlFor="firstName">First Name:</label>
-					<input
+		<Container component="main" maxWidth="xs">
+			<CssBaseline/>
+			<Box sx={{marginTop:8,display:'flex',flexDirection:'column',alignItems:'center'}}>
+				<Typography component="h1">Update Profile</Typography>
+				<Box component ="form" onSubmit={handleSubmit} sx={{mt:3}}>
+				<Grid container spacing={2}>
+              <Grid item xs={12}>
+					<TextField 
+					
 						onChange={handleChange}
 						name="firstName"
 						type="text"
 						value={formValues.firstName}
+						fullWidth
+						label="First Name"
 					/>
-				</div>
-				<div>
-					<label htmlFor="lastName">Last Name:</label>
-					<input
+				</Grid>
+				
+              <Grid item xs={12}>
+				
+					<TextField  
 						onChange={handleChange}
 						name="lastName"
 						type="text"
 						value={formValues.lastName}
+						fullWidth
+						label ="Last Name"
 					/>
-				</div>
-				<div>
-					<label htmlFor="email">Email:</label>
-					<input
+					</Grid>
+		
+              <Grid item xs={12}>
+					
+					<TextField
 						onChange={handleChange}
 						name="email"
 						type="email"
 						value={formValues.email}
+						fullWidth
+						label="Email"
 					/>
-				</div>
-				<div>
-					<label htmlFor="phoneNumber">Phone Number:</label>
-					<input
+				</Grid>
+				
+              <Grid item xs={12}>
+					<TextField 
+					
 						onChange={handleChange}
 						name="phoneNumber"
 						type="text"
 						value={formValues.phoneNumber}
+						fullWidth
+						label="Phone Number"
 					/>
-				</div>
+				</Grid>
 				
-				<Button variant="contained" type="submit" onClick={handleSubmit} endIcon={<SendIcon/>}>Submit</Button>
-			</form>
-		</div>
+				
+				<Button variant="contained" fullWidth sx={{mt:3,mb:2}} type="submit" onClick={handleSubmit} endIcon={<SendIcon/>}>Submit</Button>
+				</Grid>
+				</Box>
+			</Box>
+		</Container>
 	);
 };
 
