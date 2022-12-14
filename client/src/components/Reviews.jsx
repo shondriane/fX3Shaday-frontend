@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import Grid from '@mui/material/Grid';
+import Collapse from '@mui/material/Collapse';
 
 const Review =({id,comment,rating})=>{
 let stars=[]
@@ -15,29 +16,28 @@ let stars=[]
 //     stars.push(1)
 // }
 
+
+
+
     return(
       <div>
-        <Grid container spacing={4}>
+        <Box component ="span" sx={{display:'column', mx:'2px', }}>
+        <Grid container spacing={4} direction="column" alignItems="center" justify="center">
           
-        <Card sx={{ minWidth: 450 }}>
+       <Card sx={{display: 'flex', flexDirection: 'column'}}>
         <CardContent>
-          <Typography sx={{ fontSize: 14 }}  gutterBottom>
+          <Typography sx={{ fontSize: 14 }} color="red" gutterBottom>
             Level  of Fun
           </Typography>
           <Rating name="read-only" value={rating} readOnly />
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            {comment}
-          </Typography>
-          <Typography variant="body2">
-           {Comment}
-           
-          </Typography>
+          <Typography variant="h5" component="div">
+      {comment}
+      </Typography>
         </CardContent>
-        <CardActions>
-         
-        </CardActions>
-      </Card>
+       
+        </Card>
       </Grid>
+      </Box>
       </div>
      
     )
