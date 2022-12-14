@@ -23,7 +23,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActions, CardHeader } from '@mui/material';
-
+import Avatar from '@mui/material/Avatar';
 
 
 const Profile = ({ user,handleLogOut }) => {
@@ -64,16 +64,18 @@ const Profile = ({ user,handleLogOut }) => {
         <div >
        <Grid
   container
-  spacing={0}
-  direction="column"
-  alignItems="center"
-  justify="center"
-  style={{ minHeight: '100vh' }}
+
+  component="main"
+  style={{ height: '100vh' }}
  >
+    <CssBaseline/>
+    <Grid item xs={false}
+    sm={4}
+    md={7}>
     
-            <Box width='400px' mt={4}>
+            <Box width='400px' mt={4} alignItem="center" height='400px'>
                 
-            <Card>
+            <Card width='500px'>
                 <CardHeader sx={{ bgcolor: "#f0e5f4" }}/>
                 <CardContent>
 <Typography gutterButtom variant="h5" component="div">
@@ -97,7 +99,7 @@ Phone: {profile.phoneNumber}
  						</Button>
                 </CardActions>
             </Card>
- 			
+ 		
 	
  				{ show &&(
  					 <div id ="id01" className="modal">
@@ -131,6 +133,73 @@ Phone: {profile.phoneNumber}
            
              </Box>
              </Grid>
+             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+               {<Avatar sx= {{bgcolor:"blue"}} aria-label="company" >FX3</Avatar>}
+            <Typography component="h1" variant="h5">
+              Track Your Fitness and Nutrition
+            </Typography>
+            <Typography component="h6" variant="h7">
+              Where do you want to be?
+              It's important to track specific and meaurable goals.
+            </Typography>
+            <Box component="form" sx={{ mt: 1 }}>
+              <TextField
+                margin="normal"
+                fullWidth
+                label="Goal 1"
+                type="text"
+               
+               
+              />
+                <TextField
+                margin="normal"
+                required
+                fullWidth
+                label="Deadline" 
+               
+              />
+                  <TextField
+                margin="normal"
+                required
+                fullWidth
+                label="Plan" 
+               
+              />
+         
+                    <TextField
+                margin="normal"
+                
+                fullWidth
+                label="Weight" 
+               
+              />
+                    <TextField
+                margin="normal"
+                required
+                fullWidth
+                label="Body Fat%" 
+               
+              />
+                  <TextField
+                margin="normal"
+                required
+                fullWidth
+                label="Wait Size" 
+               />
+              </Box>
+              </Box>
+              </Grid>
+              </Grid>
+
 		</div> 
 	);
 };

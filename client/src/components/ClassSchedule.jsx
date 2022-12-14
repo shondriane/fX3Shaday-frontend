@@ -29,12 +29,10 @@ let navigate=useNavigate()
         
     }
 
-    const formatDateandTime =()=>{
-     
-    }
+
     useEffect(()=>{
         classes()
-        formatDateandTime()
+        
         
       
       
@@ -85,6 +83,7 @@ let navigate=useNavigate()
        
         
         {getClasses?.map((session)=>( 
+           
             <Card  sx={{display:'flex',justifyContent:"center",pb:2,mt:3}}>
             <Box sx={{display:'flex', flexDirection:'column'}}>
         <CardContent sx={{flex:'1 0 auto'}}>
