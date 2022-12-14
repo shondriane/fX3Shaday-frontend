@@ -47,7 +47,7 @@ const UpdateClass = ({ user }) => {
   
     const handleSubmit = async (e) => {
       e.preventDefault()
-       const updateClass= await Client.put(`${BASE_URL}/classes/${classId}`,formValues)
+      await Client.put(`${BASE_URL}/classes/${classId}`,formValues)
         .then((response)=>{
             return response
         }).catch((error)=>{

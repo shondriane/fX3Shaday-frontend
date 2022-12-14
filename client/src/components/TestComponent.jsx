@@ -22,16 +22,24 @@ import AddCircleIcon from '@mui/icons-material/AddCircle'
 import Client from '../services/Api';
 import { useNavigate } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
-
+import { CardHeader } from '@mui/material';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
 
 
 const TestComponent = () => {
 const [getClasses,setClasses]= useState([])
 const [reviews, setReviews] = useState([])
+const[userReviews,setUserReviews]=useState([])
 const [show,setShow]=useState(false)
 const navigate = useNavigate()
- 
+ let getUserReviews=[]
 const random = []
+let newList=[]
 const classes = async () => {
 		const response = await axios.get(
 			`${BASE_URL}/classes/`
@@ -44,8 +52,24 @@ const classes = async () => {
  const getReviews = async()=>{
   const response=await axios.get(`${BASE_URL}/reviews/`)
   setReviews(response.data)
+  console.log(response.data)
+  
+  // setUserReviews(response.data[0].User)
+  reviews.forEach((ele,index)=>{
+    getUserReviews.push(ele.User)
+    console.log(getUserReviews)
+  
+  })
+
+  getUserReviews.forEach((review)=>{
+    if(getUserReviews.id===review.userId && review.rating!==null){
+newList.push(getUserReviews.firstName,review.rating,review.comment)
+    }
+  })
+  console.log(newList)
   
  }
+
 	
  useEffect(()=>{
   classes()
@@ -53,6 +77,8 @@ const classes = async () => {
 
 
  },[])    
+
+
 
  const randomReviews=(display,random)=>{
 
@@ -67,7 +93,7 @@ display.forEach((ele)=>{
 
 }
 randomReviews(reviews,random)
-
+console.log(random)
 
  const handleDeleteClick = async (e,id) => {
   await Client.delete(`${BASE_URL}/classes/${id}`,{
@@ -238,33 +264,38 @@ Are you sure you want to delete the Class?
          
           </Container>
         </Box>
-        <Container sx={{ py: 8 }} maxWidth="md">
-<Grid container spacing={8}>
+        <Container maxWidth="md"componenet="main">
+<Grid container spacing={5} alignItems="flex-end">
  
+
 
 
 
 { random?.map((review)=>(
-
-    <Grid item key={review.id} xs={12} sm={6}md={6}>
-       
-    <Card
-    sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-  >
-    <CardContent >
-      <Typography sx={{fontSize:14}}>
-       Level  {review.rating} Fun
-      </Typography>
-      <Typography>
-        {review.comment}
-      </Typography>
-    </CardContent>
-    
-   
-  </Card>
- 
-  </Grid>
-
+  <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#ff8a80' }}>
+ <ListItem alignItems="flex-start">
+   <ListItemAvatar>
+     <Avatar sx={{bgcolor:'#bdb3c1'}}>{}</Avatar>
+   </ListItemAvatar>
+   <ListItemText
+     primary= {<Typography>Level {review.rating} Fun </Typography>}
+     secondary={
+       <React.Fragment>
+         <Typography
+           sx={{ display: 'inline' }}
+           component="span"
+           variant="body2"
+           color="text.primary"
+         >
+          
+         </Typography>
+         {review.comment}
+       </React.Fragment>
+     }
+   />
+ </ListItem>
+ <Divider variant="inset" component="li" />
+</List>
  
 ))} 
 
