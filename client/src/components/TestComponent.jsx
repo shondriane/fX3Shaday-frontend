@@ -35,6 +35,7 @@ const TestComponent = () => {
 const [getClasses,setClasses]= useState([])
 const [reviews, setReviews] = useState([])
 const[userReviews,setUserReviews]=useState([])
+const [oldList,setList]=useState([])
 const [show,setShow]=useState(false)
 const navigate = useNavigate()
  let getUserReviews=[]
@@ -52,7 +53,7 @@ const classes = async () => {
  const getReviews = async()=>{
   const response=await axios.get(`${BASE_URL}/reviews/`)
   setReviews(response.data)
-  console.log(response.data)
+ 
   
   // setUserReviews(response.data[0].User)
   reviews.forEach((ele,index)=>{
@@ -67,7 +68,8 @@ const classes = async () => {
     }
    })
   })
-  console.log(newList)
+ 
+
  }
 
 	
@@ -255,6 +257,7 @@ Are you sure you want to delete the Class?
  { reviews?.map((review)=>(
 <Reviews
  id={review.id}
+ name={review.name}
  comment={review.comment}
  rating={review.rating}
  />
