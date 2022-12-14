@@ -93,12 +93,3 @@ hr {
   cursor: pointer;
 }
 
-/*Card Carousel*/
-
-section .card {
-  justify-content: center;
-  align-items: center;
-  display:flex;
-height:140px;
-width:140px
-}
