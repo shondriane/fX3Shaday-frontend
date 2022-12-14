@@ -12,10 +12,11 @@ import Client from '../services/Api'
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import { BASE_URL } from '../globals';
-import {useParams,useNavigate} from 'react-router-dom'
+import {useParams,useNavigate,Link} from 'react-router-dom'
 
 
-const Classes = ({classData}) => {
+const Classes = ({classData,user,authenticated}) => {
+    
     const [selectedClass,setSelectedClass]=useState([])
     let {class_id}=useParams()
     let navigate=useNavigate()
@@ -42,8 +43,17 @@ const Classes = ({classData}) => {
             {classData.description}
            </Typography>
            <CardActions>
-            <Button size="small"> See Schedule</Button>
-            <Button size="small"> Book Session</Button>
+            <Link to="/privateTraining">
+            <Button size="small"> Book</Button>
+            </Link>
+            
+              
+  <Button size="small"> Add to Class List</Button>
+  
+           
+           
+            
+          
            </CardActions>
        
         </CardContent>

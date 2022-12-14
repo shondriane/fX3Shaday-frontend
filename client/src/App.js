@@ -15,6 +15,7 @@ import UpdateClass from './components/UpdateClass'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
 import AddReview from './components/AddReview';
+import PrivateTraining from './components/PrivateTraining';
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -93,6 +94,8 @@ function App() {
           element={<UpdateClass user={user}authenticated={authenticated} />}/>
            <Route path="/addReview/:class_id" 
           element={<AddReview user={user}authenticated={authenticated} />}/>
+           <Route path="/privateTraining" 
+          element={<PrivateTraining user={user}authenticated={authenticated} />}/>
           
 </Routes>
 

@@ -119,6 +119,12 @@ function Copyright() {
       <ThemeProvider theme={theme}>
       <CssBaseline />
       <main>
+      <a  target="_blank" href="https://calendar.google.com/calendar/u/1?cid=Zngzc2hhZGF5QGdtYWlsLmNvbQ">
+<button>
+    see schedule
+</button>
+</a>
+
         {/* Hero unit */}
         <Box
           sx={{
@@ -149,7 +155,7 @@ function Copyright() {
        
               <Button variant="contained" component={Link} to="/contact">Contact Me</Button>
               
-              <Button variant="outlined" component={Link} to="/schedule">Schedule Training Session</Button>
+              <Button variant="outlined" component={Link} to="/schedule">Upcoming Classes</Button>
             </Stack>
           </Container>
         </Box>

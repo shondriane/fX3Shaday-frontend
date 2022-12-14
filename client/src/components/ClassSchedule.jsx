@@ -69,7 +69,7 @@ let navigate=useNavigate()
             >
             Upcoming Class Schedule
             </Typography>
-        <List sx={{marginTop: 15,marginLeft:25,width:500, background:"white"}}>
+        {/* <List sx={{marginTop: 15,marginLeft:25,width:500, background:"white"}}> */}
         {getClasses?.map((session)=>( 
             <ListItem divider>
             
@@ -82,7 +82,7 @@ let navigate=useNavigate()
         
          </ListItem>
           ))}
-         </List>
+         {/* </List> */}
          </Box>
       </div>
     )

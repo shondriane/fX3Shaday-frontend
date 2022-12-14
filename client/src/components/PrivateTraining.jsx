@@ -1,33 +1,52 @@
 import React from 'react'
-import 'date-fns'
-import Grid from '@mui/material'
-import DateFnsUtils from '@date-io/date-fns'
-import {MuiPickerUtilsProvider,KeyboardTimePicker,KeyboarddatePicker} from '@material/pickers'
-
-
-const PrivateTraining =({user})=>{
-    const [formValues,setFormValues]=useState=(initialValues)
-const initialValues ={
-    time: '',
-    date:'',
-}
+import {useCalendlyEventListener,InlineWidget} from 'react-calendly'
+import {useState,useEffect} from 'react'
+import { Link } from 'react'
 
 
 
+ const PrivateTraining =()=>{
+//  document.getElementById()
+    function isCalendlyEvent(e) {
+        return e.origin === "https://calendly.com" && e.data.event && e.data.event.indexOf("calendly.") === 0;
+      };
+       
+      window.addEventListener("message", function(e) {
+        if(isCalendlyEvent(e)) {
+          /* Example to get the name of the event */
+          console.log("calendly:", e.data.date);
+          console.log("time:",e.data.time)
+          console.log("email:",e.data.email)
+          
+          /* Example to get the payload of the event */
+          console.log("Event details:", e.data.payload);
+        }
+      });
+   
 
-const handleChange=(e)=>{
-    setFormValues({...formValues,[e.target.name]:e.target.value})
-}
 
     return(
-        <div>
-<MuiPickersUtilsProvider utils={DateFnsUtils}>
-<Grid container justify ='space-around'>
-    <KeyboarddatePicker diableToolbar variant="inline" margin="normal" id="date" label ="Select Date" value={formValues.date} onChange={handleChange}/>
-</Grid>
-<KeyboardTimePicker margin="normal" id="time" label=" Select Time" onChange={handleChange}/>
-</MuiPickersUtilsProvider >
-        </div>
+     
+
+
+
+      <div class="calendly-inline-widget">
+
+<InlineWidget
+        url="https://calendly.com/shondriane-wise/60min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=ff2500" 
+        type="text/javascript"
+        text="Click here to schedule time with me!"
+        src="https://assets.calendly.com/assets/external/widget.js" async
+        onClick
+        
+        
+      />
+
+
+</div>
+
+  
+
     )
 }
 
