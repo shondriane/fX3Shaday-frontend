@@ -29,7 +29,7 @@ import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-
+import Reviews from './Reviews'
 
 const TestComponent = () => {
 const [getClasses,setClasses]= useState([])
@@ -38,8 +38,8 @@ const[userReviews,setUserReviews]=useState([])
 const [show,setShow]=useState(false)
 const navigate = useNavigate()
  let getUserReviews=[]
-const random = []
-let newList=[]
+
+ let newList=[]
 const classes = async () => {
 		const response = await axios.get(
 			`${BASE_URL}/classes/`
@@ -57,17 +57,17 @@ const classes = async () => {
   // setUserReviews(response.data[0].User)
   reviews.forEach((ele,index)=>{
     getUserReviews.push(ele.User)
-    console.log(getUserReviews)
-  
   })
 
   getUserReviews.forEach((review)=>{
-    if(getUserReviews.id===review.userId && review.rating!==null){
-newList.push(getUserReviews.firstName,review.rating,review.comment)
+   reviews.forEach((ele)=>{
+    if (ele.userId ===review.id && ele.comment!==null){
+      newList.push({comment:ele.comment,rating:ele.rating,name:review.firstName})
+     
     }
+   })
   })
   console.log(newList)
-  
  }
 
 	
@@ -79,21 +79,6 @@ newList.push(getUserReviews.firstName,review.rating,review.comment)
  },[])    
 
 
-
- const randomReviews=(display,random)=>{
-
-
-display.forEach((ele)=>{
-  
-  if(ele.comment!==null){
-    random.push(ele)
-  }
- 
-})
-
-}
-randomReviews(reviews,random)
-console.log(random)
 
  const handleDeleteClick = async (e,id) => {
   await Client.delete(`${BASE_URL}/classes/${id}`,{
@@ -265,43 +250,22 @@ Are you sure you want to delete the Class?
           </Container>
         </Box>
         <Container maxWidth="md"componenet="main">
-<Grid container spacing={5} alignItems="flex-end">
- 
+
+
+ { reviews?.map((review)=>(
+<Reviews
+ id={review.id}
+ comment={review.comment}
+ rating={review.rating}
+ />
+))}
 
 
 
 
-{ random?.map((review)=>(
-  <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#ff8a80' }}>
- <ListItem alignItems="flex-start">
-   <ListItemAvatar>
-     <Avatar sx={{bgcolor:'#bdb3c1'}}>{}</Avatar>
-   </ListItemAvatar>
-   <ListItemText
-     primary= {<Typography>Level {review.rating} Fun </Typography>}
-     secondary={
-       <React.Fragment>
-         <Typography
-           sx={{ display: 'inline' }}
-           component="span"
-           variant="body2"
-           color="text.primary"
-         >
-          
-         </Typography>
-         {review.comment}
-       </React.Fragment>
-     }
-   />
- </ListItem>
- <Divider variant="inset" component="li" />
-</List>
- 
-))} 
 
-     </Grid>
-        </Container>
 
+</Container>
       </main>
       {/* Footer */}
       <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
