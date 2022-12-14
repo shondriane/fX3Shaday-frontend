@@ -8,11 +8,15 @@ import { useNavigate } from 'react-router-dom';
 import {List,ListItem,ListItemText} from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 
 
 const ClassSchedule = ({user}) => {
     const [getClasses,setClasses]= useState([])
+    const[time,setTime]=useState('')
+    const[date,setDate]=useState('')
    
 let navigate=useNavigate()
 
@@ -24,12 +28,17 @@ let navigate=useNavigate()
        
         
     }
+
+    const formatDateandTime =()=>{
+     
+    }
     useEffect(()=>{
         classes()
+        formatDateandTime()
         
       
       
-       },[user]) 
+       },[user,classes]) 
 
       
 
@@ -58,6 +67,7 @@ let navigate=useNavigate()
             bgcolor: 'background.paper',
             pt: 8,
             pb: 6,
+           
           }}
         >
              <Typography
@@ -66,22 +76,39 @@ let navigate=useNavigate()
               align="center"
               color="text.primary"
               gutterBottom
+              mb="55"
             >
             Upcoming Class Schedule
+            
             </Typography>
         {/* <List sx={{marginTop: 15,marginLeft:25,width:500, background:"white"}}> */}
+       
+        
         {getClasses?.map((session)=>( 
-            <ListItem divider>
-            
-        
-            <ListItemText key={session.id} >
-               {session.class} {session.date} {session.time} ${session.cost}.00 <AddIcon onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
-                </ListItemText> 
+            <Card  sx={{display:'flex',justifyContent:"center",pb:2,mt:3}}>
+            <Box sx={{display:'flex', flexDirection:'column'}}>
+        <CardContent sx={{flex:'1 0 auto'}}>
+            <Typography component="div" variant="h5">
+            {session.class}
+            </Typography>
+            <Typography variant ="subtitle1" component="div">
+               {session.date} {session.time} 
+               </Typography>
+               </CardContent>
+               <Box sx={{display:'flex',alignItems:'center',p1:1,pb:1}}>
+               <AddIcon onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
+               </Box>
+               </Box>
+               <CardMedia component="img" sx={{width:151}} image={session.picture}>
+              
+               </CardMedia>
                 
-           
-        
-         </ListItem>
+                
+                
+         </Card>
+         
           ))}
+
          {/* </List> */}
          </Box>
       </div>

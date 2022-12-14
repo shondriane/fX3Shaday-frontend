@@ -24,7 +24,7 @@ let stars=[]
         <Box component ="span" sx={{display:'column', mx:'2px', }}>
         <Grid container spacing={4} direction="column" alignItems="center" justify="center">
           
-       <Card sx={{display: 'flex', flexDirection: 'column'}}>
+       <Card sx={{display: 'flex', flexGrow:1}}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="red" gutterBottom>
             Level  of Fun
