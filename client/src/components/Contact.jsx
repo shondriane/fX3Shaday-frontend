@@ -1,6 +1,7 @@
 import React from 'react'
 import '../index.css'
-
+import {useRef} from 'react'
+import emailjs from '@emailjs/browser';
 import CssBaseline from '@mui/material/CssBaseline';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
@@ -12,19 +13,38 @@ import Typography from '@mui/material/Typography';
 
 import TextField from '@mui/material/TextField';
 import Button   from '@mui/material/Button'
+import { useNavigate } from 'react-router-dom';
+
+const KEY = process.env.REACT_APP_PUBLIC_KEY
+const TEMPLATE= process.env.REACT_APP_TEMPLATE_ID
+const SERVICE= process.env.REACT_APP_SERVICE_ID
 
  const Contact=()=>{
-
+let navigate=useNavigate()
     const siteProps={
         phone:"555-123-4567",
         email: "FX3Shaday@mail.com",
         background:"https://i.ibb.co/0F7hT92/airb0676.jpg"
     }
 
-   const handleSubmit=(e)=>{
-        e.preventDefault()
-    }
 
+    const form = useRef();
+
+    const sendEmail = (e) => {
+      e.preventDefault();
+  
+      emailjs.sendForm(SERVICE, TEMPLATE, form.current, KEY)
+        .then((result) => {
+            console.log(result.text);
+        }, (error) => {
+            console.log(error.text);
+        });
+        goBack()
+    };
+
+    let goBack=()=>{
+        navigate('/')
+    }
     return (
         <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
@@ -60,15 +80,33 @@ import Button   from '@mui/material/Button'
               gutterBottom>
              Contact Me
             </Typography>
-            <a href={`mailto:${siteProps.email}`}>
-            <EmailIcon/>
-            </a>
-            <a href={`tel:{siteProps.phone}`}>
+            
+            <Typography  component="h4"
+              variant="h5"
+              align="center"
+              color="text.primary"
+              gutterBottom>
+             I want to hear your fitness goals
+             <a href={`tel:{siteProps.phone}`}>
             <LocalPhoneIcon/>
             </a>
+            </Typography>
+           
+            
+            
           
-            <Box component="form"  onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box ref={form} onSubmit={sendEmail}component="form" sx={{ mt: 1 }}>
 
+            <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="name"
+                label="Name"
+                
+                type="text"
+               
+              />
             <TextField
                 margin="normal"
                 required

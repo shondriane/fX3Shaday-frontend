@@ -93,6 +93,7 @@ function App() {
           element={<UpdateClass user={user}authenticated={authenticated} />}/>
            <Route path="/addReview/:class_id" 
           element={<AddReview user={user}authenticated={authenticated} />}/>
+          
 </Routes>
 
           
