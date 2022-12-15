@@ -34,8 +34,6 @@ import Reviews from './Reviews'
 const TestComponent = () => {
 const [getClasses,setClasses]= useState([])
 const [reviews, setReviews] = useState([])
-const[userReviews,setUserReviews]=useState([])
-const [oldList,setList]=useState([])
 const [show,setShow]=useState(false)
 const navigate = useNavigate()
  let getUserReviews=[]
@@ -149,7 +147,7 @@ const handleUpdateClick = () => {
           </Container>
         </Box>
    
-        {/* End hero unit */}
+       
 
         <Container sx={{ py: 8 }} maxWidth="md">
 <Grid container spacing={8}>
@@ -161,15 +159,14 @@ const handleUpdateClick = () => {
     <Grid item key={session.id} xs={12} sm={6}md={6}>
        
     <Card
-    sx={{ height: '100', width:'100', display: 'flex', flexDirection: 'column' }}
+    sx={{ height: '500px', display: 'flex', flexDirection: 'column' }}
   >
     <CardMedia
       component="img"
       sx={{
          
         pt: '.25%',
-        width:'100',
-        height: '100'
+       height:'300px'
       }}
       image={session.picture}
     />
@@ -229,7 +226,7 @@ Are you sure you want to delete the Class?
         
         <Box
           sx={{
-            bgcolor: 'background.paper',
+            bgcolor: 'blue',
             pt: 8,
             pb: 6,
           }}
@@ -239,7 +236,7 @@ Are you sure you want to delete the Class?
               component="h1"
               variant="h2"
               align="center"
-              color="text.primary"
+              color="white"
               gutterBottom
             >
              Testimonies
