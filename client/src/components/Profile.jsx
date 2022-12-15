@@ -53,7 +53,7 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
     }
 
     const handleChange=(e)=>{
-       console.log(e)
+      
         let url = URL.createObjectURL(e.target.files[0])
         setPicture(url)
     }
@@ -61,7 +61,7 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
 		getProfile();
 	}, [user]);
 
-    console.log(userId)
+   
 	
 
 	return (
@@ -87,7 +87,7 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
             <Box width='400px' mt={4} alignItem="center" height='700px' >
                 
             <Card sx={{ml:4}}>
-                <CardHeader sx={{ bgcolor: "#f0e5f4" }}/>
+                <CardHeader sx={{ bgcolor: "pink" }}/>
                 <CardMedia sx={{borderRadius:'7%', margin:'28px',height:'200px'}}image={picture}/>
                 <CardContent>
 <Typography gutterButtom variant="h5" component="div">

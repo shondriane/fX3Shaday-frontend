@@ -53,7 +53,7 @@ The project itself was deployed and can be [viewed here](https://fx3shadayfitnes
 ### ***Credits***
 1. Material-UI [view here](https://mui.com/material-ui/)this is a great library with free templates and resources for styling your application
 2. Calendly [view here](https://calendly.com/) great for Scheduling and PayPal Integration
-
+3. W3 Schools for Modal Component
 ***
 
 ### ***Future Features***

@@ -7,8 +7,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Register from './Register'
-import Client from '../services/Api'
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import { BASE_URL } from '../globals';
@@ -33,11 +31,11 @@ const Classes = ({classData,user,authenticated}) => {
 		<Container sx={{py:8}} maxWidth="sm">
             
             <Grid >
-                <Card sx={{height:'50%',display:'flex',flexDirection:'column'}}>
+                <Card sx={{height:'650px',display:'flex',flexDirection:'column'}}>
                 <Typography gutterBottom variant="h5" component ="h2">
             {classData.class}
            </Typography>
-                    <CardMedia component="img" sx={{pt:'.25%'}} image={classData.picture}/>
+                    <CardMedia component="img" sx={{pt:'.25%',height:'400px'}} image={classData.picture}/>
                     <CardContent sx={{flexGrow:1}}>
                     <Typography gutterBottom variant="h5" component ="h2">
             {classData.description}

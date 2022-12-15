@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../styling/Nav.css'
 
-const Nav = ({ user, handleLogOut,authenticated }) => {
+const Nav = ({ user, handleLogOut }) => {
 
 
 

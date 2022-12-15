@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Client from '../services/Api';
 
-const AddClass= ({user,authenticate}) => {
+const AddClass= ({user,}) => {
     const navigate = useNavigate()
     const initialFormValues = {
    
@@ -76,7 +76,7 @@ getClasses()
  required
  fullWidth
  label="Class"
-                  autoFocus
+                  
                 />
         </Grid>
         <Grid item xs={12} >

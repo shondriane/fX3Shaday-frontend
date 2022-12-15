@@ -4,7 +4,6 @@ import {useRef} from 'react'
 import emailjs from '@emailjs/browser';
 import CssBaseline from '@mui/material/CssBaseline';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import EmailIcon from '@mui/icons-material/Email';
 import Grid from '@mui/material/Grid';
 import LoginIcon from '@mui/icons-material/Login';
 

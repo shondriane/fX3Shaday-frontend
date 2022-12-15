@@ -14,21 +14,12 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {Link} from 'react-router-dom';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import { useEffect } from 'react';
-import ClassSchedule from './ClassSchedule'
 import DeleteIcon from '@mui/icons-material/Delete'
-import AddCircleIcon from '@mui/icons-material/AddCircle'
 import Client from '../services/Api';
 import { useNavigate,useParams } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
-import { CardHeader } from '@mui/material';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import Reviews from './Reviews'
 
 const TestComponent = ({user}) => {
@@ -106,7 +97,7 @@ const handleUpdateClick = () => {
   return (
     <>
  
-      <ThemeProvider theme={theme}>
+     
       <CssBaseline />
       <main>
 
@@ -131,8 +122,8 @@ const handleUpdateClick = () => {
               component="h1"
               variant="h2"
               align="center"
-              color="text.primary"
-              gutterBottom
+             
+              gutterbottom
             >
              FX3 Shaday
             </Typography>
@@ -183,7 +174,7 @@ const handleUpdateClick = () => {
       <Typography>
         {session.description}
       </Typography>
-      console.log(user)
+     
       {show && `${user.id}`===36&&(
       <CardActions>
      
@@ -276,7 +267,7 @@ Are you sure you want to delete the Class?
 </Container>
       </main>
      
-    </ThemeProvider>
+    
     </>
   )
 }
