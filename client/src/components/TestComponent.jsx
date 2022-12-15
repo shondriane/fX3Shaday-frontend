@@ -101,13 +101,7 @@ const handleUpdateClick = () => {
       <CssBaseline />
       <main>
 
-        {show && `${user.id}`===36(
-      <a  target="_blank" href="https://calendar.google.com/calendar/u/1?cid=Zngzc2hhZGF5QGdtYWlsLmNvbQ">
-<button>
-    see schedule
-</button>
-</a>
-)}
+
 
        
         <Box

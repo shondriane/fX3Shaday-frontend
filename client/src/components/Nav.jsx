@@ -12,6 +12,7 @@ if (user && user.id===36){
     navOptions=(
           <nav>
                  <Link to="/">Home</Link>
+                 <Link to ="/admin">Admin</Link>
             <Link to={`/profile/${user.id}`}>Profile</Link>
         <Link to="/addClass/:user_id">AddClasses</Link>
             <Link onClick={handleLogOut} to="/">
