@@ -5,7 +5,6 @@ import { BASE_URL } from '../globals'
 import { useEffect } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
-import {List,ListItem,ListItemText} from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
@@ -15,9 +14,7 @@ import CardMedia from '@mui/material/CardMedia';
 
 const ClassSchedule = ({user}) => {
     const [getClasses,setClasses]= useState([])
-    const[time,setTime]=useState('')
-    const[date,setDate]=useState('')
-    let newDate=[]
+   
 let navigate=useNavigate()
 
     const classes = async () => {
@@ -28,17 +25,11 @@ let navigate=useNavigate()
        
         
     }
-// 	 const formatDate = (getClasses) => {
-//          getClasses.forEach(ele=>{
-//   ele.date=new Date(ele.date).toLocaleDateString('en-us')
-//   ele.time = new Date(ele.time).toLocaleTimeString('en-us')
-//   newDate.push(ele)
-//      })
-// 	};
+
 
     useEffect(()=>{
         classes()
-        //  formatDate()
+       
         
       
        },[user,classes]) 
@@ -95,7 +86,7 @@ let navigate=useNavigate()
            
             <Card  sx={{display:'flex',justifyContent:"center",pb:2,mt:3,bgcolor:"pink"}}>
             <Box sx={{display:'flex', flexDirection:'column'}}>
-        <CardContent sx={{flex:'1 0 auto'}} >
+        <CardContent sx={{flex:'2 0 auto'}} >
             <Typography component="div" variant="h5">
             {session.class}
             </Typography>
@@ -107,7 +98,7 @@ let navigate=useNavigate()
                
                </Box>
                </Box>
-               <CardMedia component="img" sx={{width:151}} image={session.picture}>
+               <CardMedia component="img" sx={{width:150, height:150}} image={session.picture}>
                </CardMedia>
 
                <Typography sx={{pt:3,pl:5}}>

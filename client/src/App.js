@@ -12,6 +12,7 @@ import MyClasses from './components/MyClasses'
 import Contact from './components/Contact'
 import AddClass from './components/AddClass'
 import UpdateClass from './components/UpdateClass'
+import Footer from './components/Footer'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
 import AddReview from './components/AddReview';
@@ -101,7 +102,7 @@ function App() {
 
           
       </main>
-     
+     <Footer/>
     </div>
   );
 }

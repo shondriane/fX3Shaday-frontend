@@ -35,6 +35,7 @@ const Profile = ({ user,handleLogOut }) => {
 	const [profile, setProfile] = useState([]);
     const [show,setShow]=useState(false)
     const [picture,setPicture]=useState("initialState")
+    
 	const getProfile = async () => {
 		const response = await axios.get(`${BASE_URL}/users/${userId}`);
 		setProfile(response.data);

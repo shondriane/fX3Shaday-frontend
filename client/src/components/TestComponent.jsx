@@ -97,18 +97,7 @@ const handleUpdateClick = () => {
   navigate(`/classes`);
 };
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="FX3shaday.com">
-        FX3Shaday
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
     
   
   const theme= createTheme()
@@ -125,7 +114,7 @@ function Copyright() {
 </button>
 </a>
 
-        {/* Hero unit */}
+       
         <Box
           sx={{
             bgcolor: 'background.paper',
@@ -172,13 +161,15 @@ function Copyright() {
     <Grid item key={session.id} xs={12} sm={6}md={6}>
        
     <Card
-    sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+    sx={{ height: '100', width:'100', display: 'flex', flexDirection: 'column' }}
   >
     <CardMedia
       component="img"
       sx={{
          
         pt: '.25%',
+        width:'100',
+        height: '100'
       }}
       image={session.picture}
     />
@@ -277,20 +268,7 @@ Are you sure you want to delete the Class?
 
 </Container>
       </main>
-      {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-       
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        >
-          Get Fit, Be Fabulous and Have Fun!
-        </Typography>
-        <Copyright />
-      </Box>
-      {/* End footer */}
+     
     </ThemeProvider>
     </>
   )
