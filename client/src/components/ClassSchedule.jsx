@@ -74,7 +74,7 @@ let navigate=useNavigate()
             bgcolor: 'background.paper',
             pt: 8,
             pb: 6,
-           
+           backgroundColor:"white"
           }}
         >
              <Typography
@@ -88,36 +88,39 @@ let navigate=useNavigate()
             Upcoming Class Schedule
             
             </Typography>
-        {/* <List sx={{marginTop: 15,marginLeft:25,width:500, background:"white"}}> */}
+      
        
         
         {getClasses?.map((session)=>( 
            
-            <Card  sx={{display:'flex',justifyContent:"center",pb:2,mt:3}}>
+            <Card  sx={{display:'flex',justifyContent:"center",pb:2,mt:3,bgcolor:"pink"}}>
             <Box sx={{display:'flex', flexDirection:'column'}}>
-        <CardContent sx={{flex:'1 0 auto'}}>
+        <CardContent sx={{flex:'1 0 auto'}} >
             <Typography component="div" variant="h5">
-            
+            {session.class}
             </Typography>
             <Typography variant ="subtitle1" component="div">
                {session.date=new Date(session.date).toLocaleDateString('en-us')} {session.time} 
                </Typography>
                </CardContent>
                <Box sx={{display:'flex',alignItems:'center',p1:1,pb:1}}>
-               <AddIcon onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
+               
                </Box>
                </Box>
                <CardMedia component="img" sx={{width:151}} image={session.picture}>
-              
                </CardMedia>
-                
+               
+               <Typography sx={{pt:3,pl:5}}>
+                    Add Class
+                </Typography>
+               <AddIcon sx={{mt:3}}onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
                 
                 
          </Card>
          
           ))}
 
-         {/* </List> */}
+        
          </Box>
       </div>
     )
