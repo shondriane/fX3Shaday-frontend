@@ -17,7 +17,7 @@ const ClassSchedule = ({user}) => {
     const [getClasses,setClasses]= useState([])
     const[time,setTime]=useState('')
     const[date,setDate]=useState('')
-   
+    let newDate=[]
 let navigate=useNavigate()
 
     const classes = async () => {
@@ -28,18 +28,27 @@ let navigate=useNavigate()
        
         
     }
-
+// 	 const formatDate = (getClasses) => {
+//          getClasses.forEach(ele=>{
+//   ele.date=new Date(ele.date).toLocaleDateString('en-us')
+//   ele.time = new Date(ele.time).toLocaleTimeString('en-us')
+//   newDate.push(ele)
+//      })
+// 	};
 
     useEffect(()=>{
         classes()
+        //  formatDate()
         
-        
-      
       
        },[user,classes]) 
-
+       
       
 
+    
+     
+    
+    
 
 
        const handleSubmit = async (e,id) => {
@@ -88,10 +97,10 @@ let navigate=useNavigate()
             <Box sx={{display:'flex', flexDirection:'column'}}>
         <CardContent sx={{flex:'1 0 auto'}}>
             <Typography component="div" variant="h5">
-            {session.class}
+            
             </Typography>
             <Typography variant ="subtitle1" component="div">
-               {session.date} {session.time} 
+               {session.date=new Date(session.date).toLocaleDateString('en-us')} {session.time} 
                </Typography>
                </CardContent>
                <Box sx={{display:'flex',alignItems:'center',p1:1,pb:1}}>

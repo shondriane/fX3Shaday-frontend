@@ -9,23 +9,21 @@ import Rating from '@mui/material/Rating';
 import Grid from '@mui/material/Grid';
 import Collapse from '@mui/material/Collapse';
 
-const Review =({id,comment,rating})=>{
-let stars=[]
-
-// while(rating>0){
-//     stars.push(1)
-// }
+const Review =({id,comment,rating,name})=>{
 
 
 
 
     return(
       <div>
-        <Box component ="span" sx={{display:'column', mx:'2px', }}>
-        <Grid container spacing={4} direction="column" alignItems="center" justify="center">
+        <Box component ="span" sx={{display:'column', mx:'2px',justifyConent:"center", alignItems:"center"}}>
+        <Grid container spacing={4} direction="flex" flexWrap="wrap"alignItems="center" justify="center">
           
        <Card sx={{display: 'flex', flexGrow:1}}>
         <CardContent>
+            <Typography>
+                {name}
+            </Typography>
           <Typography sx={{ fontSize: 14 }} color="red" gutterBottom>
             Level  of Fun
           </Typography>

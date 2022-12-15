@@ -56,9 +56,7 @@ const Profile = ({ user,handleLogOut }) => {
 		getProfile();
 	}, [user]);
 
-	useEffect(() => {
-		getProfile();
-	}, [user]);
+	
 
 	return (
         <div >
@@ -73,9 +71,9 @@ const Profile = ({ user,handleLogOut }) => {
     sm={4}
     md={7}>
     
-            <Box width='400px' mt={4} alignItem="center" height='400px'>
+            <Box width='400px' mt={4} alignItem="center" height='400px' >
                 
-            <Card width='500px'>
+            <Card >
                 <CardHeader sx={{ bgcolor: "#f0e5f4" }}/>
                 <CardContent>
 <Typography gutterButtom variant="h5" component="div">

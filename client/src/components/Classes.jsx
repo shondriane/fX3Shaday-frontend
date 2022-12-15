@@ -47,9 +47,14 @@ const Classes = ({classData,user,authenticated}) => {
             <Button size="small"> Book</Button>
             </Link>
             
-              
-  <Button size="small"> Add to Class List</Button>
-  
+      {authenticated && user &&(
+        <Link to ={`myClasses/${user.id}`}>
+ <button size="small"> Add to Class List</button>
+ </Link>
+     ) }        
+ 
+  {!authenticated && !user &&<Link to ={`/register`} size ="medium" color="Green">
+    <button sx={{pl:20}} size ="medium" > Join </button></Link>}
            
            
             
