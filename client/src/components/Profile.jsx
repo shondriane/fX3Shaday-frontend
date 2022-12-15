@@ -80,9 +80,9 @@ const Profile = ({ user,handleLogOut }) => {
     
             <Box width='400px' mt={4} alignItem="center" height='700px' >
                 
-            <Card >
+            <Card sx={{ml:4}}>
                 <CardHeader sx={{ bgcolor: "#f0e5f4" }}/>
-                <CardMedia sx={{borderRadius:'7%', margin:'28px',height:'100px'}}image={picture}/>
+                <CardMedia sx={{borderRadius:'7%', margin:'28px',height:'200px'}}image={picture}/>
                 <CardContent>
 <Typography gutterButtom variant="h5" component="div">
 Name: {profile.firstName} {profile.lastName}
