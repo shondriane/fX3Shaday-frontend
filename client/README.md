@@ -6,33 +6,57 @@
 ***
 
 ### ***Description***
-FX3Shaday is a webiste for personal trainers to keep track of their schedule with clients.
+FX3Shaday is a webiste for personal trainers to keep track of scheduling sessions with clients.
 
 ***
+
+**_Component Hierarchy Diagram:_**
+![Component Hierarchy Diagram](./CHD.png)
+![Entity Relationship Diagram](./ERD.png)
 
 ### ***Technologies Used***
 * HTML
 * CSS
 * React.js
 * JavaScript
+* Calendly
+* Material -Ui
+* Sequelize
+* PostgreSql
+* Express
 
-**_Component Hierarchy Diagram:_**
-![Component Hierarchy Diagram](./CHD.png)
+
+
 
 ***
 
 ### ***Getting Started***
 1. Fork and clone
-2. npm install
-3. npm start
+2. Npm install
+3. Npm start
+4. Site was Created using Auth 
 
 A trello board used to keep track of development progress can be [viewed here](https://trello.com/b/IzDMz1Dm/fx3).
 
-The project itself was deployed and can be [viewed here]().
+The project itself was deployed and can be [viewed here](https://fx3shadayfitness.herokuapp.com/).
 
 ***
 
 ### ***Screenshots***
+![Auth](./Auth.png)
+![Home](./Home.png)
+![Class Options](./ClassBooking.png)
+![Schedule and Pay](./Scheduling.png)
+![Testimony](./Testimonies.png)
 
 ***
 ### ***Credits***
+1. Material-UI [view here](https://mui.com/material-ui/)this is a great library with free templates and resources for styling your application
+2. Calendly [view here](https://calendly.com/) great for Scheduling and PayPal Integration
+
+***
+
+### ***Future Features***
+1. Finish building out Admin integration
+2. Upload Videos for Online Classes
+3. Add Fitness Articles

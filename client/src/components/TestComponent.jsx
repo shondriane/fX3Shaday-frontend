@@ -20,7 +20,7 @@ import ClassSchedule from './ClassSchedule'
 import DeleteIcon from '@mui/icons-material/Delete'
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import Client from '../services/Api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
 import { CardHeader } from '@mui/material';
 import List from '@mui/material/List';
@@ -32,6 +32,7 @@ import Avatar from '@mui/material/Avatar';
 import Reviews from './Reviews'
 
 const TestComponent = ({user}) => {
+ 
 const [getClasses,setClasses]= useState([])
 const [reviews, setReviews] = useState([])
 const [show,setShow]=useState(false)
@@ -81,10 +82,12 @@ const classes = async () => {
 
 
  const handleDeleteClick = async (e,id) => {
+
   await Client.delete(`${BASE_URL}/classes/${id}`,{
     classId:id
   });
 navigate(`/classes`)
+
 };
 
 const handleClick=async(e,id)=>{
@@ -96,7 +99,7 @@ const handleUpdateClick = () => {
 };
 
 
-    
+   
   
   const theme= createTheme()
 		
@@ -106,11 +109,14 @@ const handleUpdateClick = () => {
       <ThemeProvider theme={theme}>
       <CssBaseline />
       <main>
+
+        {show && `${user.id}`===36(
       <a  target="_blank" href="https://calendar.google.com/calendar/u/1?cid=Zngzc2hhZGF5QGdtYWlsLmNvbQ">
 <button>
     see schedule
 </button>
 </a>
+)}
 
        
         <Box
@@ -177,7 +183,8 @@ const handleUpdateClick = () => {
       <Typography>
         {session.description}
       </Typography>
-      {show && user.id ==36(
+      console.log(user)
+      {show && `${user.id}`===36&&(
       <CardActions>
      
           

@@ -9,16 +9,13 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import ClearIcon from '@mui/icons-material/Clear';
 import '../index.css';
-import Container from '@mui/material/Container';
+
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -28,14 +25,14 @@ import CardMedia from '@mui/material/CardMedia';
 
 
 
-const Profile = ({ user,handleLogOut }) => {
+const Profile = ({ user,handleLogOut,authenticated }) => {
 	let navigate = useNavigate();
 	const { user_id } = useParams();
 	const userId = parseInt(user_id);
 	const [profile, setProfile] = useState([]);
     const [show,setShow]=useState(false)
     const [picture,setPicture]=useState("initialState")
-    
+
 	const getProfile = async () => {
 		const response = await axios.get(`${BASE_URL}/users/${userId}`);
 		setProfile(response.data);
@@ -64,10 +61,18 @@ const Profile = ({ user,handleLogOut }) => {
 		getProfile();
 	}, [user]);
 
+    console.log(userId)
 	
 
 	return (
         <div >
+                    { authenticated && userId===36 &&(
+      <a  target="_blank" href="https://calendar.google.com/calendar/u/1?cid=Zngzc2hhZGF5QGdtYWlsLmNvbQ">
+<button>
+    see schedule
+</button>
+</a>
+)}
        <Grid
   container
 
@@ -149,7 +154,7 @@ Phone: {profile.phoneNumber}
            
              </Box>
              </Grid>
-             <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+             <Grid item xs={12} sm={8} md={5}  elevation={6} square bgcolor="pink">
           <Box
             sx={{
               my: 8,
@@ -157,10 +162,12 @@ Phone: {profile.phoneNumber}
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+            
+              
             }}
           >
                {<Avatar sx= {{bgcolor:"blue"}} aria-label="company" >FX3</Avatar>}
-            <Typography component="h1" variant="h5">
+            <Typography component="h1" variant="h5"   >
               Track Your Fitness and Nutrition
             </Typography>
             <Typography component="h6" variant="h7">

@@ -55,6 +55,7 @@ function App() {
       <main>
 <Routes>
   <Route path="/" element={<Test/>} user={user}/>
+  <Route path="/:user_id" element={<Test/>} user={user}/>
   <Route path="/sign-in" 
   element={<SignIn 
     setUser={setUser} 

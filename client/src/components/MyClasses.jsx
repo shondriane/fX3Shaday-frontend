@@ -60,9 +60,11 @@ schedule()
                    
                     <CardContent sx={{flexGrow:1}}>
                     <Typography gutterBottom variant="h5" component ="h2">
-            {schedule.time}{schedule.date}
+                        Scheduled on 
+                    {schedule.date=new Date(schedule.date).toLocaleDateString('en-us')} at {schedule.time}
            </Typography>
            <CardActions>
+        Review
            <IconButton key ={schedule.id}onClick={(e)=>handleClick(e,schedule.id)}style={{color:"red"}}>
 <FavoriteIcon/>
            </IconButton>

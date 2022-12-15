@@ -36,6 +36,7 @@ const SignIn = ({ toggleAuthenticated, setUser }) => {
       setUser(payload)
       toggleAuthenticated(true)
       navigate('/')
+      
     }
   }
 
