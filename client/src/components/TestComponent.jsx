@@ -31,7 +31,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Reviews from './Reviews'
 
-const TestComponent = () => {
+const TestComponent = ({user}) => {
 const [getClasses,setClasses]= useState([])
 const [reviews, setReviews] = useState([])
 const [show,setShow]=useState(false)
@@ -177,6 +177,7 @@ const handleUpdateClick = () => {
       <Typography>
         {session.description}
       </Typography>
+      {show && user.id ==36(
       <CardActions>
      
           
@@ -184,7 +185,8 @@ const handleUpdateClick = () => {
             <Button  component={Link} to={`/updateClass/${session.id}`} size="small"> Update</Button>
             <Button onClick={(e)=>handleClick(e,session.id)}size="small"> Delete </Button>
            </CardActions>
-           { show &&(
+      )}
+           {show &&(
 					 <div id ="id01" className="modal">
                     
                      <form className="modal-content">
@@ -210,6 +212,7 @@ Are you sure you want to delete the Class?
                  </form>
                  </div>
                 )}
+                
     </CardContent>
     
    
@@ -222,7 +225,7 @@ Are you sure you want to delete the Class?
 
      </Grid>
         </Container>
-
+       
         
         <Box
           sx={{
