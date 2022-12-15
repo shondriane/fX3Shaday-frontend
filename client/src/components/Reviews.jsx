@@ -15,11 +15,11 @@ const Review =({id,comment,rating,name})=>{
 
 
     return(
-      <div>
-        <Box component ="span" sx={{display:'column', mx:'2px',justifyConent:"center", alignItems:"center"}}>
-        <Grid container spacing={4} direction="flex" flexWrap="wrap"alignItems="center" justify="center">
+      <div >
+        <Box  component ="span" sx={{display:'column', mx:'2px',justifyConent:"center", alignItems:"center"}}>
+        <Grid  className="reviewRatings" container spacing={4} direction="flex" flexWrap="wrap"alignItems="center" justify="center">
           
-       <Card sx={{display: 'flex', flexGrow:1}}>
+       <Card  sx={{display: 'flex', flexGrow:1}}>
         <CardContent>
             <Typography>
                 {name}

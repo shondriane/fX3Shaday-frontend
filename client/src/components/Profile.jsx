@@ -24,6 +24,8 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActions, CardHeader } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
+import CardMedia from '@mui/material/CardMedia';
+
 
 
 const Profile = ({ user,handleLogOut }) => {
@@ -32,7 +34,7 @@ const Profile = ({ user,handleLogOut }) => {
 	const userId = parseInt(user_id);
 	const [profile, setProfile] = useState([]);
     const [show,setShow]=useState(false)
-
+    const [picture,setPicture]=useState("initialState")
 	const getProfile = async () => {
 		const response = await axios.get(`${BASE_URL}/users/${userId}`);
 		setProfile(response.data);
@@ -52,6 +54,11 @@ const Profile = ({ user,handleLogOut }) => {
         setShow(true)
     }
 
+    const handleChange=(e)=>{
+       console.log(e)
+        let url = URL.createObjectURL(e.target.files[0])
+        setPicture(url)
+    }
 	useEffect(() => {
 		getProfile();
 	}, [user]);
@@ -71,10 +78,11 @@ const Profile = ({ user,handleLogOut }) => {
     sm={4}
     md={7}>
     
-            <Box width='400px' mt={4} alignItem="center" height='400px' >
+            <Box width='400px' mt={4} alignItem="center" height='700px' >
                 
             <Card >
                 <CardHeader sx={{ bgcolor: "#f0e5f4" }}/>
+                <CardMedia sx={{borderRadius:'7%', margin:'28px',height:'100px'}}image={picture}/>
                 <CardContent>
 <Typography gutterButtom variant="h5" component="div">
 Name: {profile.firstName} {profile.lastName}
@@ -86,16 +94,25 @@ Email: {profile.email}
 Phone: {profile.phoneNumber}
 </Typography>
 
-
                 </CardContent>
+               
                 <CardActions>
+                    <TextField
+                    
+                    name="picture"
+                    type="file"
+                    fullWidth
+                    onChange={handleChange}
+                    />
+                    </CardActions>
                 <Button variant="contained" startIcon={<AddCircleIcon/>}onClick={handleUpdateClick}>
  							Update Profile
  						</Button>
                          <Button variant="outlined" endIcon={<DeleteIcon/>} onClick={handleClick}>
  							Delete Profile
  						</Button>
-                </CardActions>
+
+                
             </Card>
  		
 	

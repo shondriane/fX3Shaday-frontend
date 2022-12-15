@@ -109,9 +109,9 @@ let navigate=useNavigate()
                </Box>
                <CardMedia component="img" sx={{width:151}} image={session.picture}>
                </CardMedia>
-               
+
                <Typography sx={{pt:3,pl:5}}>
-                    Add Class
+                    Add Class to Schedule
                 </Typography>
                <AddIcon sx={{mt:3}}onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
                 

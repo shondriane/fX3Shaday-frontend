@@ -257,7 +257,7 @@ Are you sure you want to delete the Class?
          
           </Container>
         </Box>
-        <Container maxWidth="md"componenet="main">
+        <Container id="reviewRatings" maxWidth="md"componenet="main">
 
 
 
