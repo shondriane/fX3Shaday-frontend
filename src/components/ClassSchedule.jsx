@@ -15,6 +15,7 @@ import {Link} from 'react-router-dom'
 
 const ClassSchedule = ({user,authenticated}) => {
     const [getClasses,setClasses]= useState([])
+ 
    
 let navigate=useNavigate()
 
@@ -27,21 +28,13 @@ let navigate=useNavigate()
         
     }
 
+ 
 
     useEffect(()=>{
-        classes()
-       
-        
+        classes() 
       
        },[user,classes]) 
        
-      
-
-    
-     
-    
-    
-
 
        const handleSubmit = async (e,id) => {
         e.preventDefault()
@@ -62,8 +55,10 @@ let navigate=useNavigate()
           navigate(`/myClasses/${user.id}`)
         
          
-        
+  
       }
+
+ 
     return (
       <div>
       <Box
@@ -96,8 +91,8 @@ let navigate=useNavigate()
             <Typography component="div" variant="h5">
             {session.class}
             </Typography>
-            <Typography variant ="subtitle1" component="div">
-               {session.date=new Date(session.date).toLocaleDateString('en-us')} {session.time} 
+            <Typography color="blue" variant ="subtitle1" component="div">
+               { session.date= new Date(session.date).toLocaleDateString('en-us')} {session.time} 
                </Typography>
                <Typography variant ="subtitle1" component="div">
                 ${session.cost} per session
