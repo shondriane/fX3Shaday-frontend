@@ -114,7 +114,7 @@ let navigate=useNavigate()
                     Add Class to Schedule
                     <AddIcon sx={{mt:2}}onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
                     <Link to="/privateTraining">
-            <Button size="small"> Book</Button>
+            <Button size="small"> Book Session and Make Payment</Button>
             </Link>
                 </Typography>
                
