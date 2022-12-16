@@ -9,7 +9,8 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import AddCircleIcon from '@mui/icons-material/AddCircle'
 import ClearIcon from '@mui/icons-material/Clear';
 import '../index.css';
-
+import Container from '@mui/material/Container';
+import {Link} from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 
@@ -32,11 +33,20 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
 	const [profile, setProfile] = useState([]);
     const [show,setShow]=useState(false)
     const [picture,setPicture]=useState("initialState")
+    const [getClasses,setClasses]= useState([])
 
 	const getProfile = async () => {
 		const response = await axios.get(`${BASE_URL}/users/${userId}`);
 		setProfile(response.data);
 	};
+    const classes = async () => {
+		const response = await axios.get(
+			`${BASE_URL}/classes/`
+		);
+        setClasses(response.data)
+      
+        
+    }
 	const handleUpdateClick = () => {
 		navigate(`/update-profile/${userId}`);
 	};
@@ -52,6 +62,11 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
         setShow(true)
     }
 
+    const handleClickClass=async(e,id)=>{
+        setShow(true)
+        }
+        
+
     const handleChange=(e)=>{
       
         let url = URL.createObjectURL(e.target.files[0])
@@ -59,14 +74,29 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
     }
 	useEffect(() => {
 		getProfile();
+        classes()
 	}, [user]);
 
    
-	
+	 const handleDeleteClickClass = async (e,id) => {
+
+  await Client.delete(`${BASE_URL}/classes/${id}`,{
+    classId:id
+  });
+navigate(`/classes`)
+
+};
+
+
+
+const handleUpdateClickClass = () => {
+  navigate(`/classes`);
+};
+
 
 	return (
         <div >
-                    { authenticated && userId===36 &&(
+                    { userId===36 &&(
       <a  target="_blank" href="https://calendar.google.com/calendar/u/1?cid=Zngzc2hhZGF5QGdtYWlsLmNvbQ">
 <button>
     see schedule
@@ -84,8 +114,83 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
     sm={4}
     md={7}>
     
-            <Box width='400px' mt={4} alignItem="center" height='700px' >
-                
+            <Box width='600px' mt={4} alignItem="center" height='700px' >
+            <Container sx={{ py: 8 }} maxWidth="md">
+{/* <Grid container spacing={8}>
+     {getClasses?.map((session)=>(
+      
+      <Grid item key={session.id} xs={12} sm={6}md={6}>
+         
+      <Card
+      sx={{ height: '500px', display: 'flex', flexDirection: 'column' }}
+    >
+      <CardMedia
+        component="img"
+        sx={{
+           
+          pt: '.25%',
+         height:'300px'
+        }}
+        image={session.picture}
+      />
+      <CardContent sx={{ flexGrow: 1 }}>
+        <Typography gutterBottom variant="h5" component="h2">
+          {session.class}
+        </Typography>
+        <Typography>
+          {session.description}
+        </Typography>
+       
+      
+        <CardActions>
+       
+            
+      
+              <Button  component={Link} to={`/updateClass/${session.id}`} size="small"> Update</Button>
+              <Button onClick={(e)=>handleClickClass(e,session.id)}size="small"> Delete </Button>
+             </CardActions>
+       
+             {show &&(
+                       <div id ="id01" className="modal">
+                      
+                       <form className="modal-content">
+                           <div className="container">
+  <h1>
+  Delete Class
+  </h1>
+  <p>
+  Are you sure you want to delete the Class?
+  </p>
+                          
+                           
+                     <div class="clearfix">
+                     <Button variant="contained" endIcon = {<ClearIcon/>} onClick={handleUpdateClickClass}>
+                           cancel
+                       </Button>
+                       <Button variant="outlined"  startIcon={<DeleteIcon/>} onClick={(e)=>handleDeleteClickClass(e,session.id)}>
+                           Delete 
+                       </Button>
+                      
+                       </div>
+                   </div>
+                   </form>
+                   </div>
+                  )}
+                  
+      </CardContent>
+      
+     
+    </Card>
+   
+    </Grid>
+  
+    
+  ))} 
+  </Grid>
+   */}
+   </Container>
+        
+              
             <Card sx={{ml:4}}>
                 <CardHeader sx={{ bgcolor: "pink" }}/>
                 <CardMedia sx={{borderRadius:'7%', margin:'28px',height:'200px'}}image={picture}/>
@@ -120,6 +225,7 @@ Phone: {profile.phoneNumber}
 
                 
             </Card>
+           
  		
 	
  				{ show &&(
@@ -149,7 +255,7 @@ Phone: {profile.phoneNumber}
                   </div>
                  )}
                     	
-				
+                 
  		
            
              </Box>
@@ -166,6 +272,11 @@ Phone: {profile.phoneNumber}
               
             }}
           >
+         
+      
+     
+     
+            
                {<Avatar sx= {{bgcolor:"blue"}} aria-label="company" >FX3</Avatar>}
             <Typography component="h1" variant="h5"   >
               Track Your Fitness and Nutrition

@@ -10,9 +10,10 @@ import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import {Link} from 'react-router-dom'
 
-
-const ClassSchedule = ({user}) => {
+const ClassSchedule = ({user,authenticated}) => {
     const [getClasses,setClasses]= useState([])
    
 let navigate=useNavigate()
@@ -44,7 +45,11 @@ let navigate=useNavigate()
 
        const handleSubmit = async (e,id) => {
         e.preventDefault()
-       
+    if(!authenticated && !user){
+        navigate('/register')
+    }
+
+     
           await axios.post(`${BASE_URL}/userclasses/user/${user.id}/class/${id}`,{
             userId:user.id,
             classId:id
@@ -54,7 +59,8 @@ let navigate=useNavigate()
           }).catch((error)=>{
               console.error(error)
           })
-         navigate(`/myClasses/${user.id}`)
+          navigate(`/myClasses/${user.id}`)
+        
          
         
       }
@@ -93,6 +99,9 @@ let navigate=useNavigate()
             <Typography variant ="subtitle1" component="div">
                {session.date=new Date(session.date).toLocaleDateString('en-us')} {session.time} 
                </Typography>
+               <Typography variant ="subtitle1" component="div">
+                ${session.cost} per session
+               </Typography>
                </CardContent>
                <Box sx={{display:'flex',alignItems:'center',p1:1,pb:1}}>
                
@@ -103,9 +112,16 @@ let navigate=useNavigate()
 
                <Typography sx={{pt:3,pl:5}}>
                     Add Class to Schedule
+                    <AddIcon sx={{mt:2}}onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
+                    <Link to="/privateTraining">
+            <Button size="small"> Book</Button>
+            </Link>
                 </Typography>
-               <AddIcon sx={{mt:3}}onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
-                
+               
+              
+             
+              
+             
                 
          </Card>
          

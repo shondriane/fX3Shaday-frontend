@@ -27,6 +27,16 @@ const Classes = ({classData,user,authenticated}) => {
     useEffect(()=>{
         session()
     })
+
+    const handleSubmit = async (e,id) => {
+        e.preventDefault()
+    if(!authenticated && !user){
+        navigate(`/register`)
+    }
+    else{
+        navigate(`/myClasses/${user.id}`)
+    }
+}
 	return (
 		<Container sx={{py:8}} maxWidth="sm">
             
@@ -44,15 +54,16 @@ const Classes = ({classData,user,authenticated}) => {
             <Link to="/privateTraining">
             <Button size="small"> Book</Button>
             </Link>
-            
+           
       {authenticated && user &&(
-        <Link to ={`myClasses/${user.id}`}>
- <button size="small"> Add to Class List</button>
- </Link>
-     ) }        
+        <Link to ={`myClasses/${user.id}`}> 
+
+  </Link>
+     ) }         
  
-  {!authenticated && !user &&<Link to ={`/register`} size ="medium" color="Green">
-    <button sx={{pl:20}} size ="medium" > Join </button></Link>}
+   {!authenticated && !user &&(<Link to ={`/register`} size ="medium" color="Green">
+    <button sx={{pl:20}} size ="medium" > Join </button></Link>)
+}
            
            
             
