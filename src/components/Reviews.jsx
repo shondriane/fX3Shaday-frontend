@@ -11,12 +11,12 @@ import Grid from '@mui/material/Grid';
 
 const Review =({id,comment,rating,name})=>{
 
-
+  
 
 
     return(
       <div >
-        {`${comment}`!==""(
+       
         <Box  component ="span" sx={{display:'column', mx:'2px',justifyConent:"center", alignItems:"center"}}>
         <Grid  className="reviewRatings" container spacing={4} direction="flex" flexWrap="wrap"alignItems="center" justify="center">
           
@@ -37,7 +37,7 @@ const Review =({id,comment,rating,name})=>{
         </Card>
       </Grid>
       </Box>
-      )}
+   
       </div>
      
     )
