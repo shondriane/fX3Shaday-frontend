@@ -242,17 +242,15 @@ Are you sure you want to delete the Class?
         </Box>
         <Container id="reviewRatings" maxWidth="md"componenet="main">
 
+{reviews.slice(13, 22).map((review)=>(
 
-
- { reviews?.map((review)=>(
-  
 <Reviews
  id={review.id}
  name={review.name}
  comment={review.comment}
  rating={review.rating}
  />
-
+  
 ))}
 
 
