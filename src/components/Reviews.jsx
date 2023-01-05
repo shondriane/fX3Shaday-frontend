@@ -23,7 +23,7 @@ const Review =({id,comment,rating,name})=>{
             <Typography>
                 {name}
             </Typography>
-          <Typography sx={{ fontSize: 14 }} color="red" gutterBottom="false">
+          <Typography sx={{ fontSize: 14 }} color="red" >
             Level  of Fun
           </Typography>
           <Rating name="read-only" value={rating} readOnly />

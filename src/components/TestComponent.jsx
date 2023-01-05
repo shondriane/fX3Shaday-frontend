@@ -117,7 +117,7 @@ const handleUpdateClick = () => {
               variant="h2"
               align="center"
              
-              gutterBottom="false"
+              
             >
              FX3 Shaday
             </Typography>
@@ -147,9 +147,9 @@ const handleUpdateClick = () => {
 
 {getClasses?.map((session)=>(
  
-    <Grid item key={session.id} xs={12} sm={6}md={6}>
+    <Grid item  xs={12} sm={6}md={6}>
        
-    <Card
+    <Card key={session.id}
     sx={{ height: '500px', display: 'flex', flexDirection: 'column' }}
   >
     <CardMedia

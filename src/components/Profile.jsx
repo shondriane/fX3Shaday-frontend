@@ -134,7 +134,7 @@ const handleUpdateClickClass = () => {
         image={session.picture}
       />
       <CardContent sx={{ flexGrow: 1 }}>
-        <Typography gutterBottom variant="h5" component="h2">
+        <Typography  variant="h5" component="h2">
           {session.class}
         </Typography>
         <Typography>

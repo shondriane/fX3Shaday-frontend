@@ -59,7 +59,7 @@ schedule()
                 />
                    
                     <CardContent sx={{flexGrow:1}}>
-                    <Typography  gutterBottom="false" variant="h5" component ="h2">
+                    <Typography   variant="h5" component ="h2">
                         Scheduled on 
                     {schedule.date=new Date(schedule.date).toLocaleDateString('en-us')} at {schedule.time}
            </Typography>
