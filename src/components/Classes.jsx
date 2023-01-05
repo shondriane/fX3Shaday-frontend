@@ -42,12 +42,12 @@ const Classes = ({classData,user,authenticated}) => {
             
             <Grid >
                 <Card sx={{height:'650px',display:'flex',flexDirection:'column'}}>
-                <Typography gutterBottom variant="h5" component ="h2">
+                <Typography gutterBottom="false" variant="h5" component ="h2">
             {classData.class}
            </Typography>
                     <CardMedia component="img" sx={{pt:'.25%',height:'400px'}} image={classData.picture}/>
                     <CardContent sx={{flexGrow:1}}>
-                    <Typography gutterBottom variant="h5" component ="h2">
+                    <Typography  gutterBottom="false"variant="h5" component ="h2">
             {classData.description}
            </Typography>
            <CardActions>

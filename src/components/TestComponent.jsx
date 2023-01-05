@@ -117,7 +117,7 @@ const handleUpdateClick = () => {
               variant="h2"
               align="center"
              
-              gutterbottom
+              gutterBottom="false"
             >
              FX3 Shaday
             </Typography>
@@ -162,7 +162,7 @@ const handleUpdateClick = () => {
       image={session.picture}
     />
     <CardContent sx={{ flexGrow: 1 }}>
-      <Typography gutterBottom variant="h5" component="h2">
+      <Typography  variant="h5" component="h2">
         {session.class}
       </Typography>
       <Typography>
@@ -232,7 +232,7 @@ Are you sure you want to delete the Class?
               variant="h2"
               align="center"
               color="white"
-              gutterBottom
+             
             >
              Testimonies
             </Typography>

@@ -74,7 +74,7 @@ let navigate=useNavigate()
               variant="h2"
               align="center"
               color="text.primary"
-              gutterBottom
+              gutterBottom="false"
               mb="55"
             >
             Upcoming Class Schedule

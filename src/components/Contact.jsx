@@ -76,7 +76,7 @@ let navigate=useNavigate()
               variant="h2"
               align="center"
               color="text.primary"
-              gutterBottom>
+              gutterBottom="false">
              Contact Me
             </Typography>
             
@@ -84,7 +84,7 @@ let navigate=useNavigate()
               variant="h5"
               align="center"
               color="text.primary"
-              gutterBottom>
+              gutterBottom="false">
              I want to hear your fitness goals
              <a href={`tel:{siteProps.phone}`}>
             <LocalPhoneIcon/>
