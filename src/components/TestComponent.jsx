@@ -245,12 +245,14 @@ Are you sure you want to delete the Class?
 
 
  { reviews?.map((review)=>(
+  
 <Reviews
  id={review.id}
  name={review.name}
  comment={review.comment}
  rating={review.rating}
  />
+
 ))}
 
 
