@@ -15,7 +15,7 @@ const Review =({id,comment,rating,name})=>{
 
     return(
       <div >
-        {show && `${comment}`!==null(
+        {show && `${comment}`!==""(
         <Box  component ="span" sx={{display:'column', mx:'2px',justifyConent:"center", alignItems:"center"}}>
         <Grid  className="reviewRatings" container spacing={4} direction="flex" flexWrap="wrap"alignItems="center" justify="center">
           
