@@ -19,7 +19,7 @@ const Review =({id,comment,rating,name})=>{
        
         <Box  component ="span" sx={{display:'column', mx:'2px',justifyConent:"center", alignItems:"center"}}>
         <Grid  className="reviewRatings" container spacing={4} direction="flex" flexWrap="wrap"alignItems="center" justify="center">
-      {{comment}!==null &&(
+      {{comment}!=="" &&(
        <Card  sx={{display: 'flex', flexGrow:1}}>
         <CardContent>
             <Typography>
