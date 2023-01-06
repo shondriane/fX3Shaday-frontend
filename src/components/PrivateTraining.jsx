@@ -31,7 +31,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
     const res = await axios.get(`${BASE_URL}/classes/${classId}`)
     setPrice(res.data.cost)
     setCost(res.data)
-    console.log(price)
+    
   }
   useEffect(()=>{
    getUser()

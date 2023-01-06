@@ -62,7 +62,7 @@ const classes = async () => {
     if(ele.comment!==null){
       getUserReviews.push(ele)
     }
- console.log(getUserReviews)
+
   })
 
   getUserReviews.forEach((review)=>{

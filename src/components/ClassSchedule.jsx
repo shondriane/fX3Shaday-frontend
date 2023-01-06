@@ -28,7 +28,7 @@ let navigate=useNavigate()
 
   if (response.data[i].date.slice(0,10)>= new Date().toISOString().slice(0,10)){
     response.data[i].date=response.data[i].date.slice(0,10)
-    console.log(response.data[i].time.slice(0,2))
+ 
     let hours = response.data[i].time.slice(0,2)
     let amOrpm= hours >= 12 ? 'pm': 'am'
     hours =(hours%12)||12
@@ -38,7 +38,7 @@ let navigate=useNavigate()
   }
  }
  setClasses(newClass)
- console.log(newClass)
+
   }
 
 

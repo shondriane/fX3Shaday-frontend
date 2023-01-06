@@ -39,7 +39,6 @@ const Register = () => {
       await RegisterUser({
         firstName: formValues.firstName,
         lastName: formValues.lastName,
-        username: formValues.username,
         password: formValues.password,
         email: formValues.email,
         phoneNumber: formValues.phoneNumber,
@@ -111,17 +110,7 @@ const Register = () => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                   onChange={handleChange}
-                   name="username"
-                   type="text"
-                   placeholder="pretzel89"
-                   value={formValues.username}
-                   required
-                  fullWidth
-                  label="Username"
-                  
-                />
+              
               </Grid>
               <Grid item xs={12}>
                 <TextField
