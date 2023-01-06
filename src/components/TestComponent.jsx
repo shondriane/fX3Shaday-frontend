@@ -29,12 +29,15 @@ const [reviews, setReviews] = useState([])
 const [show,setShow]=useState(false)
 const navigate = useNavigate()
  let getUserReviews=[]
+let categories =[]
 
  let newList=[]
 const classes = async () => {
 		const response = await axios.get(
 			`${BASE_URL}/classes/`
 		);
+
+  
         setClasses(response.data)
       
         

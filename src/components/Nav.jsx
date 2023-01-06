@@ -42,7 +42,7 @@ else if(user){
         <nav>
           
             <Link to="/">Home</Link>
-            <Link to="/classes">Classes</Link>
+            <Link to="/schedule">Classes</Link>
             <Link to="/sign-in">Login</Link>
             <Link to="/register">Join</Link>
            

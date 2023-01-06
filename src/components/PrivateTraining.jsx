@@ -12,28 +12,31 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
+
  const PrivateTraining =()=>{
   const { user_id } = useParams();
 	const userId = parseInt(user_id)
   const {class_id}= useParams()
   const classId=parseInt(class_id)
-
-  const [cost,setCost]=useState(0)
   const [user,setUser]=useState("")
+  const [cost,setCost]=useState([])
+ const [price,setPrice]=useState(0)
   let navigate = useNavigate();
 
   const getUser = async()=>{
     const res = await axios.get(`${BASE_URL}/users/${userId}`)
     setUser(res.data.firstName)
   }
-  const getCost= async()=>{
+  const getClass= async()=>{
     const res = await axios.get(`${BASE_URL}/classes/${classId}`)
+    setPrice(res.data.cost)
     setCost(res.data)
+    console.log(price)
   }
   useEffect(()=>{
    getUser()
-   getCost()
-  })
+   getClass()
+  },[price])
 
   const initialOptions = {
     "client-id": CLIENT_ID,
@@ -42,24 +45,6 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
    
 }
 
-
-
-//  document.getElementById()
-    // function isCalendlyEvent(e) {
-    //     return e.origin === "https://calendly.com" && e.data.event && e.data.event.indexOf("calendly.") === 0;
-    //   };
-       
-    //   window.addEventListener("message", function(e) {
-    //     if(isCalendlyEvent(e)) {
-    //       /* Example to get the name of the event */
-    //       console.log("calendly:", e.data.date);
-    //       console.log("time:",e.data.time)
-    //       console.log("email:",e.data.email)
-          
-    //       /* Example to get the payload of the event */
-    //       console.log("Event details:", e.data.payload);
-    //     }
-    //   });
    
 
     const AddToSchedule=async()=>{
@@ -82,7 +67,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
 
 
 
-      <div class="calendly-inline-widget">
+      <div >
         <Container component="main">
           <Box
             sx={{
@@ -92,10 +77,6 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
               alignItems: 'center', 
             }}
           >
-         
-      
-     
-     
             
                {<Avatar sx= {{bgcolor:"red", mb:5,mt:2}} aria-label="company" >FX3</Avatar>}
             
@@ -106,14 +87,14 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
               The cost is ${cost.cost} and you can pay via:
             </Typography>
             <Grid Container spacing={2} sx={{mt:3}}>
-         <PayPalScriptProvider options={initialOptions}>
+            <PayPalScriptProvider options={initialOptions}>
             <PayPalButtons
                createOrder={(data, actions) => {
                 return actions.order.create({
                     purchase_units: [
                         {
                             amount: {
-                                value: {cost},
+                                value: `${price}`
                             },
                         },
                     ],
@@ -122,7 +103,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
             onApprove={(data, actions) => {
                 return actions.order.capture().then((details) => {
                     const name = details.payer.name.given_name;
-                    alert("Transaction completed");
+                    alert(`Transaction completed by ${name}`);
                     AddToSchedule()
                 });
             }}
@@ -131,15 +112,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
        </Grid>
         </Box>
         </Container>
-{/* <InlineWidget
-        url="https://calendly.com/shondriane-wise/60min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=ff2500" 
-        type="text/javascript"
-        text="Click here to schedule time with me!"
-        src="https://assets.calendly.com/assets/external/widget.js" async
-        onClick
-        
-        
-      /> */}
+
 
 
 </div>

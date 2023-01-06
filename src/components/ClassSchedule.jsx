@@ -3,7 +3,6 @@ import axios from 'axios'
 import{useState} from 'react'
 import { BASE_URL } from '../globals'
 import { useEffect } from 'react';
-import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -11,8 +10,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
-import {Link} from 'react-router-dom'
-import { NestCamWiredStandTwoTone } from '@mui/icons-material';
+
 
 const ClassSchedule = ({user,authenticated}) => {
     const [getClasses,setClasses]= useState([])
@@ -44,12 +42,11 @@ let navigate=useNavigate()
   }
 
 
- 
 
     useEffect(()=>{
         classes() 
       
-       },[user,classes]) 
+       },[]) 
        
 
        const handleSubmit = async (e,id) => {
@@ -60,18 +57,7 @@ let navigate=useNavigate()
 
      else{
       
-navigate(`/privateTraining/${user.id}/${id}`)
-    
-          // await axios.post(`${BASE_URL}/userclasses/user/${user.id}/class/${id}`,{
-          //   userId:user.id,
-          //   classId:id
-          // })
-          // .then((response)=>{
-          //     return response
-          // }).catch((error)=>{
-          //     console.error(error)
-          // })
-          // navigate(`/myClasses/${user.id}`)
+navigate(`/privateTraining/${user.id}/${id}`) 
         
         }
   
@@ -125,11 +111,9 @@ navigate(`/privateTraining/${user.id}/${id}`)
                </CardMedia>
 
                <Typography sx={{pt:3,pl:5}}>
-                    {/* Add Class to Schedule
-                    <AddIcon sx={{mt:2}}onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon> */}
-                    {/* <Link to="/privateTraining"> */}
+          
             <Button onClick={(e)=>handleSubmit(e,session.id)} size="small" > Book Session and Make Payment</Button>
-            {/* </Link> */}
+           
                 </Typography>
                
               
