@@ -97,7 +97,7 @@ function App() {
           element={<UpdateClass user={user}authenticated={authenticated} />}/>
            <Route path="/addReview/:class_id" 
           element={<AddReview user={user}authenticated={authenticated} />}/>
-           <Route path="/privateTraining" 
+           <Route path="/privateTraining/:user_id/:class_id" 
           element={<PrivateTraining user={user}authenticated={authenticated} />}/>
           
           

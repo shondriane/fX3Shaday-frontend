@@ -12,10 +12,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom'
+import { NestCamWiredStandTwoTone } from '@mui/icons-material';
 
 const ClassSchedule = ({user,authenticated}) => {
     const [getClasses,setClasses]= useState([])
- 
+let newClass = []
    
 let navigate=useNavigate()
 
@@ -23,10 +24,25 @@ let navigate=useNavigate()
 		const response = await axios.get(
 			`${BASE_URL}/classes/`
 		);
-        setClasses(response.data)
-       
-        
-    }
+    // setClasses(response.data)
+
+ for (let i=0; i<response.data.length;i++){
+
+  if (response.data[i].date.slice(0,10)>= new Date().toISOString().slice(0,10)){
+    response.data[i].date=response.data[i].date.slice(0,10)
+    console.log(response.data[i].time.slice(0,2))
+    let hours = response.data[i].time.slice(0,2)
+    let amOrpm= hours >= 12 ? 'pm': 'am'
+    hours =(hours%12)||12
+    let minutes = response.data[i].time.slice(3,5)
+     response.data[i].time = hours + ":" + minutes+ " "+ amOrpm
+    newClass.push(response.data[i])
+  }
+ }
+ setClasses(newClass)
+ console.log(newClass)
+  }
+
 
  
 
@@ -38,23 +54,26 @@ let navigate=useNavigate()
 
        const handleSubmit = async (e,id) => {
         e.preventDefault()
-    if(!authenticated && !user){
+    if(!authenticated || !user){
         navigate('/register')
     }
 
-     
-          await axios.post(`${BASE_URL}/userclasses/user/${user.id}/class/${id}`,{
-            userId:user.id,
-            classId:id
-          })
-          .then((response)=>{
-              return response
-          }).catch((error)=>{
-              console.error(error)
-          })
-          navigate(`/myClasses/${user.id}`)
+     else{
+      
+navigate(`/privateTraining/${user.id}/${id}`)
+    
+          // await axios.post(`${BASE_URL}/userclasses/user/${user.id}/class/${id}`,{
+          //   userId:user.id,
+          //   classId:id
+          // })
+          // .then((response)=>{
+          //     return response
+          // }).catch((error)=>{
+          //     console.error(error)
+          // })
+          // navigate(`/myClasses/${user.id}`)
         
-         
+        }
   
       }
 
@@ -106,11 +125,11 @@ let navigate=useNavigate()
                </CardMedia>
 
                <Typography sx={{pt:3,pl:5}}>
-                    Add Class to Schedule
-                    <AddIcon sx={{mt:2}}onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon>
-                    <Link to="/privateTraining">
-            <Button size="small"> Book Session and Make Payment</Button>
-            </Link>
+                    {/* Add Class to Schedule
+                    <AddIcon sx={{mt:2}}onClick={(e)=>handleSubmit(e,session.id)} ></AddIcon> */}
+                    {/* <Link to="/privateTraining"> */}
+            <Button onClick={(e)=>handleSubmit(e,session.id)} size="small" > Book Session and Make Payment</Button>
+            {/* </Link> */}
                 </Typography>
                
               

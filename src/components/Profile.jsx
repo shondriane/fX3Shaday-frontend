@@ -279,11 +279,11 @@ Phone: {profile.phoneNumber}
             
                {<Avatar sx= {{bgcolor:"blue"}} aria-label="company" >FX3</Avatar>}
             <Typography component="h1" variant="h5"   >
-              Track Your Fitness and Nutrition
+              Track Your Fitness System
             </Typography>
             <Typography component="h6" variant="h7">
               Where do you want to be?
-              It's important to track specific and meaurable goals.
+              Create new processes to get results
             </Typography>
             <Box component="form" sx={{ mt: 1 }}>
               <TextField
@@ -294,41 +294,46 @@ Phone: {profile.phoneNumber}
                
                
               />
-                <TextField
-                margin="normal"
-                required
-                fullWidth
-                label="Deadline" 
-               
-              />
+           
                   <TextField
                 margin="normal"
                 required
                 fullWidth
-                label="Plan" 
-               
+                label="Process" 
               />
          
                     <TextField
                 margin="normal"
                 
                 fullWidth
-                label="Weight" 
+                label="Tracking" 
                
               />
-                    <TextField
+                <TextField
                 margin="normal"
-                required
                 fullWidth
-                label="Body Fat%" 
+                label="Goal 2"
+                type="text"
+               
                
               />
+           
                   <TextField
                 margin="normal"
                 required
                 fullWidth
-                label="Wait Size" 
-               />
+                label="Process" 
+              />
+         
+                    <TextField
+                margin="normal"
+                
+                fullWidth
+                label="Tracking" 
+               
+              />
+                
+              
               </Box>
               </Box>
               </Grid>

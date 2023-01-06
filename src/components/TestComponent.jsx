@@ -46,8 +46,11 @@ const classes = async () => {
  
   
   // setUserReviews(response.data[0].User)
-  reviews.forEach((ele,index)=>{
-    getUserReviews.push(ele.User)
+  reviews.forEach((ele)=>{
+    if(ele.comment!==null){
+      getUserReviews.push(ele)
+    }
+ console.log(getUserReviews)
   })
 
   getUserReviews.forEach((review)=>{
@@ -61,6 +64,8 @@ const classes = async () => {
  
 
  }
+
+ 
 
 	
  useEffect(()=>{
@@ -242,7 +247,7 @@ Are you sure you want to delete the Class?
         </Box>
         <Container id="reviewRatings" maxWidth="md"componenet="main">
 
-{reviews.slice(13, 22).map((review)=>(
+{reviews.slice(Math.floor(Math.random()*15),reviews.length).map((review)=>(
 
 <Reviews
  id={review.id}
