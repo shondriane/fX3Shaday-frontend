@@ -95,7 +95,7 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
   style={{ height: '100vh' }}
  >
     <CssBaseline/>
-    <Typography sx={{mt:3}}variant="h1"> Hi, {profile.firstName}</Typography>
+    <Typography sx={{mt:2}}variant="h1"> Hi, {profile.firstName}</Typography>
     <Grid item xs={false}
     sm={4}
     md={7}>

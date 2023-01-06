@@ -21,6 +21,7 @@ import Client from '../services/Api';
 import { useNavigate,useParams } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
 import Reviews from './Reviews'
+import { RepeatOneSharp } from '@mui/icons-material';
 
 const TestComponent = ({user}) => {
  
@@ -29,19 +30,27 @@ const [reviews, setReviews] = useState([])
 const [show,setShow]=useState(false)
 const navigate = useNavigate()
  let getUserReviews=[]
-let categories =[]
+
 
  let newList=[]
 const classes = async () => {
 		const response = await axios.get(
 			`${BASE_URL}/classes/`
 		);
-
-  
-        setClasses(response.data)
+   
+    let Categories=[]
+    let Object ={}
+      for( let i in response.data){
+        let categoryTitle= response.data[i].class
+        Object[categoryTitle]=response.data[i]
+      }
+      for(let i in Object){
+        Categories.push(Object[i])
+      }
+      setClasses(Categories)
+  }
+    
       
-        
-    }
 
  const getReviews = async()=>{
   const response=await axios.get(`${BASE_URL}/reviews/`)
