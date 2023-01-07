@@ -87,7 +87,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
               The cost is ${cost.cost} and you can pay via:
             </Typography>
             <Grid Container spacing={2} sx={{mt:3}}>
-            <PayPalScriptProvider options={initialOptions}>
+            <PayPalScriptProvider deferLoading={true} options={initialOptions}>
             <PayPalButtons
                createOrder={(data, actions) => {
                 return actions.order.create({
