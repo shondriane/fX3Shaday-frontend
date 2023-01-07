@@ -11,18 +11,13 @@ import ClearIcon from '@mui/icons-material/Clear';
 import '../index.css';
 import motivationArray from '../motivation'
 import Container from '@mui/material/Container';
-import {Link} from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { CardActions, CardHeader } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
+import {  CardHeader } from '@mui/material';
 import CardMedia from '@mui/material/CardMedia';
 
 
@@ -87,26 +82,25 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
 
        <Grid
   container
- spacing={0}
- direction="column"
- alignItems="center"
- justify="center"
-  component="main"
-  style={{ height: '100vh' }}
+  spacing={0}
+  direction="column"
+  alignItems="center"
+  justify="center"
+  style={{ minHeight: '100vh' }}
  >
     <CssBaseline/>
-    <Typography sx={{mt:2}}variant="h1"> Hi, {profile.firstName}</Typography>
-    <Grid item xs={false}
+    <Typography sx={{mt:2}}variant="h1"> Hey, {profile.firstName}</Typography>
+    <Grid item xs={3}
     sm={4}
     md={7}>
     
-            <Box width='700px'alignItem="center" height='700px' flexDirection="column" flexGrow="1">
+            <Box width='700px'alignItem="center" height='800px' flexDirection="column" flexGrow="1">
             <Container sx={{ py: 8 }} maxWidth="md">
 
    </Container>
         
               
-            <Card>
+            <Card sx={{maxWidth:550, ml:3}}>
                 <CardHeader sx={{ bgcolor: "pink" }}/>
                 <CardMedia component="img" height="400"  image={motivationQuote}/>
                 <CardContent>

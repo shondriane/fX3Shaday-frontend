@@ -1,9 +1,7 @@
 import React from 'react'
-import {InlineWidget} from 'react-calendly'
 import { PayPalScriptProvider,PayPalButtons } from '@paypal/react-paypal-js'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
-import Client from '../services/Api';
 import { useParams, useNavigate } from 'react-router-dom';
 import {useState,useEffect} from 'react'
 import Box from '@mui/material/Box';
@@ -86,6 +84,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
               The cost is ${cost.cost} and you can pay via:
             </Typography>
             <Grid Container spacing={2} sx={{mt:3}}>
+              {price!==0&&(
             <PayPalScriptProvider options={initialOptions}>
                     <PayPalButtons
                         createOrder={(data, actions) => {
@@ -108,6 +107,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
                         }}
                     />
                 </PayPalScriptProvider>
+ )}
        </Grid>
         </Box>
         </Container>
