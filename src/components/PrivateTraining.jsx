@@ -31,7 +31,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
     const res = await axios.get(`${BASE_URL}/classes/${classId}`)
     setPrice(res.data.cost)
     setCost(res.data)
-    console.log(price)
+    
   }
   useEffect(()=>{
    getUser()
@@ -42,8 +42,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
     "client-id": CLIENT_ID,
     currency: "USD",
     intent: "capture",
-   
-}
+};
 
    
 
@@ -87,28 +86,28 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
               The cost is ${cost.cost} and you can pay via:
             </Typography>
             <Grid Container spacing={2} sx={{mt:3}}>
-            <PayPalScriptProvider  options={initialOptions}>
-            <PayPalButtons
-               createOrder={(data, actions) => {
-                return actions.order.create({
-                    purchase_units: [
-                        {
-                            amount: {
-                                value: `${price}`
-                            },
-                        },
-                    ],
-                });
-            }}
-            onApprove={(data, actions) => {
-                return actions.order.capture().then((details) => {
-                    const name = details.payer.name.given_name;
-                    alert(`Transaction completed by ${name}`);
-                    AddToSchedule()
-                });
-            }}
-            />
-        </PayPalScriptProvider>
+            <PayPalScriptProvider options={initialOptions}>
+                    <PayPalButtons
+                        createOrder={(data, actions) => {
+                            return actions.order.create({
+                                purchase_units: [
+                                    {
+                                        amount: {
+                                            value: `${price}`
+                                        },
+                                    },
+                                ],
+                            });
+                        }}
+                        onApprove={(data, actions) => {
+                            return actions.order.capture().then((details) => {
+                                const name = details.payer.name.given_name;
+                                alert(`Transaction completed by ${name}`);
+                                AddToSchedule()
+                            });
+                        }}
+                    />
+                </PayPalScriptProvider>
        </Grid>
         </Box>
         </Container>
