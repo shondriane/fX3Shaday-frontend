@@ -46,7 +46,7 @@ let navigate=useNavigate()
     useEffect(()=>{
         classes() 
       
-       },[]) 
+       },[getClasses]) 
        
 
        const handleSubmit = async (e,id) => {
