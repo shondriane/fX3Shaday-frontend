@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
+
 const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
 
  const PrivateTraining =()=>{
