@@ -8,6 +8,7 @@ import SignIn from './components/SignIn'
 import Class from './components/Class'
 import ClassSchedule from './components/ClassSchedule';
 import Admin from './components/Admin'
+import UserClasses from './components/UserClasses'
 import UpdateProfile from './components/UpdateProfile'
 import MyClasses from './components/MyClasses'
 import Contact from './components/Contact'
@@ -101,7 +102,8 @@ function App() {
           element={<AddReview user={user}authenticated={authenticated} />}/>
            <Route path="/privateTraining/:user_id/:class_id" 
           element={<PrivateTraining user={user}authenticated={authenticated} />}/>
-          
+            <Route path="/userclass/class/:class_id" 
+          element={<UserClasses user={user}authenticated={authenticated} />}/>
           
 </Routes>
 
