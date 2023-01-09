@@ -81,18 +81,20 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
 
 
        <Grid
-  container
-  spacing={0}
+       container
+       spacing={0}
   direction="column"
   alignItems="center"
   justify="center"
-  style={{ minHeight: '100vh' }}
+  style={{minHeight:'100vh'}}
  >
     <CssBaseline/>
-    <Typography sx={{mt:2}}variant="h1"> Hey, {profile.firstName}</Typography>
+    
+  
     <Grid item xs={3}
     sm={4}
     md={7}>
+      
     
             <Box width='700px'alignItem="center" height='800px' flexDirection="column" flexGrow="1">
             <Container sx={{ py: 8 }} maxWidth="md">
@@ -100,7 +102,7 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
    </Container>
         
               
-            <Card sx={{maxWidth:550, ml:3}}>
+            <Card sx={{maxWidth:550, ml:3}} justify="center" alignItem="center">
                 <CardHeader sx={{ bgcolor: "pink" }}/>
                 <CardMedia component="img" height="400"  image={motivationQuote}/>
                 <CardContent>
