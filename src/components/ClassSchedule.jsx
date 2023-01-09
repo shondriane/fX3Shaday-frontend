@@ -124,7 +124,7 @@ navigate(`/privateTraining/${user.id}/${id}`)
                <CardMedia component="img" sx={{width:150, height:150}} image={session.picture}>
                </CardMedia>
 
-               <Typography sx={{pt:3,pl:5}}>
+               <Typography sx={{pt:3,pl:5}} >
           
             <Button onClick={(e)=>handleSubmit(e,session.id)} size="small" > Book Session and Make Payment</Button>
            

@@ -7,6 +7,7 @@ import Register from './components/Register';
 import SignIn from './components/SignIn'
 import Class from './components/Class'
 import ClassSchedule from './components/ClassSchedule';
+import Admin from './components/Admin'
 import UpdateProfile from './components/UpdateProfile'
 import MyClasses from './components/MyClasses'
 import Contact from './components/Contact'
@@ -56,6 +57,7 @@ function App() {
       <main>
 <Routes>
   <Route path="/" element={<Test/>} user={user}/>
+  <Route path="/admin/:user_id" element={<Admin/>} user={user}/>
   <Route path="/:user_id" element={<Test/>} user={user}/>
   <Route path="/sign-in" 
   element={<SignIn 

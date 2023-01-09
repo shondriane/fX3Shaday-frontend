@@ -24,7 +24,7 @@ import Reviews from './Reviews'
 import { RepeatOneSharp } from '@mui/icons-material';
 
 const TestComponent = ({user}) => {
- 
+
 const [getClasses,setClasses]= useState([])
 const [reviews, setReviews] = useState([])
 const [show,setShow]=useState(false)
@@ -246,7 +246,7 @@ Are you sure you want to delete the Class?
           <Container maxWidth="sm">
             <Typography
               component="h1"
-              variant="h3"
+              variant="h2"
               align="center"
               color="white"
              
