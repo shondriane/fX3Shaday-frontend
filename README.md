@@ -10,7 +10,7 @@ FX3Shaday is a webiste for personal trainers to keep track of scheduling session
 
 ***
 
-**_Component Hierarchy Diagram:_**
+**_Component Hierarchy Diagram and Entity Relationship Diagram:_**
 ![Component Hierarchy Diagram](https://i.ibb.co/Dz8H7hS/CHD.png)
 ![Entity Relationship Diagram](https://i.ibb.co/By0TLYn/ERD.png)
 
