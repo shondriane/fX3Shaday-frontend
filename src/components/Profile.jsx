@@ -91,15 +91,10 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
     <CssBaseline/>
     
   
-    <Grid item xs={5}
-    sm={7}
-    md={9}>
+    <Grid item xs={12} sm={6} md={6}
+    >
       
-    
-            <Box width='350px'alignItem="center" height='800px' flexDirection="column" flexGrow="1">
-            <Container sx={{ py: 8 }} maxWidth="md">
-
-   </Container>
+  
         
               
             <Card sx={{maxWidth:550}} justify="center" alignItem="center">
@@ -127,10 +122,10 @@ Phone: {profile.phoneNumber}
  							Delete Profile
  						</Button>
 
-                
+              
             </Card>
            
- 		
+           
 	
  				{ show &&(
  					 <div id ="id01" className="modal">
@@ -161,8 +156,7 @@ Phone: {profile.phoneNumber}
                     	
                  
  		
-           
-             </Box>
+
              </Grid>
              
               </Grid>

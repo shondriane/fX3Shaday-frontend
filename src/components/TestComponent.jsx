@@ -246,7 +246,7 @@ Are you sure you want to delete the Class?
           <Container maxWidth="sm">
             <Typography
               component="h1"
-              variant="h2"
+              variant="h3"
               align="center"
               color="white"
              
