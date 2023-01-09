@@ -11,8 +11,8 @@ FX3Shaday is a webiste for personal trainers to keep track of scheduling session
 ***
 
 **_Component Hierarchy Diagram:_**
-![Component Hierarchy Diagram](./assets/CHD.png)
-![Entity Relationship Diagram](./assets/ERD.png)
+![Component Hierarchy Diagram](https://i.ibb.co/Dz8H7hS/CHD.png)
+![Entity Relationship Diagram](https://i.ibb.co/By0TLYn/ERD.png)
 
 ### ***Technologies Used***
 * HTML
@@ -43,11 +43,11 @@ The project itself was deployed and can be [viewed here](https://fx3shadayfitnes
 ***
 
 ### ***Screenshots***
-![Auth](./asseets/Auth.png)
-![Home](./assets/Home.png)
-![Class Options](./assets/ClassBooking.png)
-![Schedule and Pay](./assets/Scheduling.png)
-![Testimony](./assets/Testimonies.png)
+![Auth](https://i.ibb.co/GPrC0Q9/Auth.png)
+![Home](https://i.ibb.co/5s16TFt/Home.png)
+![Class Options](https://i.ibb.co/z79WmNY/Screen-Shot-2023-01-09-at-5-11-37-PM.png)
+![Schedule and Pay](https://i.ibb.co/d6fP6Vn/Screen-Shot-2023-01-09-at-5-21-56-PM.png)
+![Testimony](https://i.ibb.co/3WPnZRN/Screen-Shot-2023-01-09-at-5-16-24-PM.png)
 
 ***
 ### ***Credits***
