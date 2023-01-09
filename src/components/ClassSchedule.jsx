@@ -15,8 +15,12 @@ import Button from '@mui/material/Button';
 const ClassSchedule = ({user,authenticated}) => {
     const [getClasses,setClasses]= useState([])
 let newClass = []
+
+
    
 let navigate=useNavigate()
+
+
 
     const classes = async () => {
 		const response = await axios.get(
@@ -27,19 +31,28 @@ let navigate=useNavigate()
  for (let i=0; i<response.data.length;i++){
 
   if (response.data[i].date.slice(0,10)>= new Date().toISOString().slice(0,10)){
-    response.data[i].date=response.data[i].date.slice(0,10)
+    let date= new Date (response.data[i].date)
+    let eleven = new Date (date.getTime()+77*24*60*60*1000)
+    let finish = eleven.toLocaleDateString().slice(0,10)
+    
+
+  let dayOfWeek = date.toLocaleDateString('en-us',{weekday:'long'})
+    response.data[i].date= dayOfWeek+ "," +" "+response.data[i].date.slice(0,10)
  
     let hours = response.data[i].time.slice(0,2)
     let amOrpm= hours >= 12 ? 'pm': 'am'
     hours =(hours%12)||12
     let minutes = response.data[i].time.slice(3,5)
-     response.data[i].time = hours + ":" + minutes+ " "+ amOrpm
+ 
+     response.data[i].time = dayOfWeek+" " + "at " +hours + ":" + minutes+ " "+ amOrpm +" until " + finish
     newClass.push(response.data[i])
+    
   }
  }
  setClasses(newClass)
 
   }
+
 
 
 
@@ -89,18 +102,19 @@ navigate(`/privateTraining/${user.id}/${id}`)
        
         
         {getClasses?.map((session)=>( 
-           
+          
             <Card  sx={{display:'flex',justifyContent:"center",pb:2,mt:3,bgcolor:"pink"}}>
             <Box sx={{display:'flex', flexDirection:'column'}}>
         <CardContent sx={{flex:'2 0 auto'}} >
             <Typography component="div" variant="h5">
             {session.class}
             </Typography>
+           
             <Typography color="blue" variant ="subtitle1" component="div">
-               { session.date= new Date(session.date).toLocaleDateString('en-us')} {session.time} 
+            { session.date= new Date(session.date).toLocaleDateString('en-us')} every {session.time} 
                </Typography>
                <Typography variant ="subtitle1" component="div">
-                ${session.cost} per session
+                ${session.cost} for 11-week session
                </Typography>
                </CardContent>
                <Box sx={{display:'flex',alignItems:'center',p1:1,pb:1}}>

@@ -12,6 +12,7 @@ import Avatar from '@mui/material/Avatar';
 const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
 
  const PrivateTraining =()=>{
+  
   const { user_id } = useParams();
 	const userId = parseInt(user_id)
   const {class_id}= useParams()
@@ -68,7 +69,8 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
         <Container component="main">
           <Box
             sx={{
-              marginTop: 8,
+              marginTop: 5``
+              ,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center', 
@@ -77,7 +79,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
             
                {<Avatar sx= {{bgcolor:"red", mb:5,mt:2}} aria-label="company" >FX3</Avatar>}
             
-            <Typography component="h6" variant="h7" sx={{marginBottom:5}}>
+            <Typography component="h6" variant="h6" sx={{marginBottom:5}}>
              Hi, {user} I look forward to seeing you at the {cost.class}.
             </Typography>
             <Typography component="h1" variant="h5"   >
