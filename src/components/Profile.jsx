@@ -91,20 +91,20 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
     <CssBaseline/>
     
   
-    <Grid item xs={3}
-    sm={4}
-    md={7}>
+    <Grid item xs={5}
+    sm={7}
+    md={9}>
       
     
-            <Box width='700px'alignItem="center" height='800px' flexDirection="column" flexGrow="1">
+            <Box width='350px'alignItem="center" height='800px' flexDirection="column" flexGrow="1">
             <Container sx={{ py: 8 }} maxWidth="md">
 
    </Container>
         
               
-            <Card sx={{maxWidth:550, ml:3}} justify="center" alignItem="center">
+            <Card sx={{maxWidth:550}} justify="center" alignItem="center">
                 <CardHeader sx={{ bgcolor: "pink" }}/>
-                <CardMedia component="img" height="400"  image={motivationQuote}/>
+                <CardMedia component="img" height="20%" width='20%' image={motivationQuote}/>
                 <CardContent>
             
 <Typography gutterButtom variant="h5" component="div">
