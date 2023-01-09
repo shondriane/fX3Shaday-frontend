@@ -113,7 +113,7 @@ navigate(`/privateTraining/${user.id}/${id}`)
            
             <Typography color="blue" variant ="subtitle1" component="div">
               
-            { session.date= new Date(session.date).toLocaleDateString('en-us')} every {session.time} 
+            { session.date} every {session.time} 
                </Typography>
                <Typography variant ="subtitle1" component="div">
                 ${session.cost} for 11-week session
