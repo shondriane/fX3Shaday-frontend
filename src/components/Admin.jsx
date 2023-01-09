@@ -106,7 +106,7 @@ const handleUpdateClick = () => {
             justifyContent="center"
           >
      
-            <Button variant="contained" component={Link} to="/contact">Current Students</Button>
+            <Button variant="contained" component={Link} to="/students">Current Students</Button>
             
             <Button variant="outlined" component={Link} to="/addClass/:user_id">Add Class</Button>
           </Stack>
@@ -146,9 +146,10 @@ const handleUpdateClick = () => {
     <CardActions>
    
         
-  
+   
           <Button  component={Link} to={`/updateClass/${session.id}`} size="small"> Update</Button>
           <Button onClick={(e)=>handleClick(e,session.id)}size="small"> Delete </Button>
+          <Button  component={Link} to={`/userclass/class/${session.id}`} size="small"> Students</Button>
          </CardActions>
     
          {show &&(
