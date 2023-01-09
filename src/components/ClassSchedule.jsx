@@ -110,6 +110,7 @@ navigate(`/privateTraining/${user.id}/${id}`)
             </Typography>
            
             <Typography color="blue" variant ="subtitle1" component="div">
+              
             { session.date= new Date(session.date).toLocaleDateString('en-us')} every {session.time} 
                </Typography>
                <Typography variant ="subtitle1" component="div">
