@@ -30,7 +30,9 @@ let navigate=useNavigate()
  for (let i=0; i<response.data.length;i++){
 
   if (response.data[i].date.slice(0,10)>= new Date().toISOString().slice(0,10)){
+   
     let date= new Date (response.data[i].date)
+    response.data[i].date = date.toLocaleDateString('en-us')
     let eleven = new Date (date.getTime()+77*24*60*60*1000)
     let finish = eleven.toLocaleDateString().slice(0,10)
     
