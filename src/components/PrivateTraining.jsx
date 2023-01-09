@@ -12,7 +12,7 @@ import Avatar from '@mui/material/Avatar';
 const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
 
  const PrivateTraining =()=>{
-  
+
   const { user_id } = useParams();
 	const userId = parseInt(user_id)
   const {class_id}= useParams()
@@ -69,7 +69,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
         <Container component="main">
           <Box
             sx={{
-              marginTop: 5``
+              marginTop: 5
               ,
               display: 'flex',
               flexDirection: 'column',
