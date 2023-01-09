@@ -106,7 +106,7 @@ const handleUpdateClick = () => {
             justifyContent="center"
           >
      
-            <Button variant="contained" component={Link} to="/contact">Current Users</Button>
+            <Button variant="contained" component={Link} to="/contact">Current Students</Button>
             
             <Button variant="outlined" component={Link} to="/addClass/:user_id">Add Class</Button>
           </Stack>
