@@ -7,7 +7,9 @@ import Typography from '@mui/material/Typography'
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import {Link} from 'react-router-dom';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
@@ -33,6 +35,10 @@ const [getStudents,setStudents]= useState([])
                 <Box
                 sx={{marginTop:6, display:'flex', flexDirection:'column', alignItems:'center'}}>
             <Typography variant="h5" sx={{marginBottom: 4}}>Current Students</Typography>
+            <Link to={`/student/${classId}`}>
+             <Button variant="contained">Add</Button>
+            </Link>
+           
             <Grid Container spacing={3}>
          <List sx={{width:'100%', maxWidth:360, bgcolor:"pink"}}>
       

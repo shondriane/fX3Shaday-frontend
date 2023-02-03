@@ -26,10 +26,9 @@ let navigate=useNavigate()
 			`${BASE_URL}/classes/`
 		);
     // setClasses(response.data)
-
  for (let i=0; i<response.data.length;i++){
 
-  if (response.data[i].date.slice(0,10)>= new Date().toISOString().slice(0,10)){
+  if (response.data[i].date.slice(0,10)>= new Date().toISOString().slice(0,10) && response.data[i].capacity!=0){
    
     let date= new Date (response.data[i].date)
     response.data[i].date = date.toLocaleDateString('en-us')

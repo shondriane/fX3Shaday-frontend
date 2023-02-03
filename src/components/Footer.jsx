@@ -2,7 +2,7 @@
 import Typography from '@mui/material/Typography';
 import {Link} from 'react-router-dom';
 import Box from '@mui/material/Box';
-
+import Container from '@mui/material/Container';
 const Footer=()=>{
 
     function Copyright() {
@@ -18,8 +18,8 @@ const Footer=()=>{
         );
       }
     return (
-        <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
-       
+        <footer component="footer" sx={{ bgcolor: 'background.paper',bottom:0,py:2, px:4,mt:'auto'}} >
+       <Container maxWidth="sm">
         <Typography
           variant="subtitle1"
           align="center"
@@ -27,9 +27,11 @@ const Footer=()=>{
           component="p"
         >
           Get Fit, Be Fabulous and Have Fun!
+         
         </Typography>
         <Copyright />
-      </Box>
+        </Container>
+      </footer>
     )
 }
 

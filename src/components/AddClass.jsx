@@ -22,7 +22,8 @@ const AddClass= ({user,}) => {
       time:'',
       date:'',
       capacity:'',
-      cost:''
+      cost:'',
+  
      
       
     }

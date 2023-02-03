@@ -28,7 +28,10 @@ else if(user){
           <Link to="/">Home</Link>
           <Link to={`/profile/${user.id}`}>Profile</Link>
       <Link to={`/myClasses/${user.id}`}>MyClasses</Link>
+      {/* <Link to={`/consultation/${user.id}`}>Private Training</Link> */}
+      <Link to="/consultation">Consultation</Link>
       <Link to="/schedule">Classes</Link>
+      <Link to ={`/private/${user.id}`}>Private</Link>
           <Link onClick={handleLogOut} to="/">
             Sign Out
           </Link>
@@ -42,6 +45,7 @@ else if(user){
         <nav>
           
             <Link to="/">Home</Link>
+            <Link to="/consultation">Private</Link>
             <Link to="/schedule">Classes</Link>
             <Link to="/sign-in">Login</Link>
             <Link to="/register">Join</Link>

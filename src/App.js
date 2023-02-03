@@ -5,9 +5,11 @@ import Profile from './components/Profile'
 import { CheckSession } from './services/Auth';
 import Register from './components/Register';
 import SignIn from './components/SignIn'
-import Class from './components/Class'
+import Private from './components/Private'
+import Classes from './components/Classes'
 import ClassSchedule from './components/ClassSchedule';
 import Admin from './components/Admin'
+import Student from './components/Student'
 import UserClasses from './components/UserClasses'
 import UpdateProfile from './components/UpdateProfile'
 import MyClasses from './components/MyClasses'
@@ -81,13 +83,22 @@ function App() {
             element={<UpdateProfile user={user} handleLogOut={handleLogOut}/>}
           />
            <Route
-            path="/classes"
-            element={<Class user={user} />}
+            path="/consultation"
+            element={<Private user={user} />}
           />
           <Route
-            path="/classes/:classes_id"
-            element={<Class user={user} authenticated={authenticated} />}
+            path="/book-session/:classes_id"
+            element={<Private user={user} authenticated={authenticated} />}
           />
+            <Route
+            path="/student/:classes_id"
+            element={<Student user={user} authenticated={authenticated} />}
+          />
+           <Route
+            path="/private/:user_id"
+            element={<Classes user={user} authenticated={authenticated} />}
+          />
+          
           <Route path="/schedule" 
           element={<ClassSchedule user={user} authenticated={authenticated}/>}/>
           <Route path="/myClasses/:user_id" 
