@@ -15,6 +15,8 @@ import {Link,useNavigate,usParams} from 'react-router-dom';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import { BASE_URL } from '../globals';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import AddReview from './AddReview';
 
 const MyClasses=({user})=>{
@@ -45,7 +47,25 @@ schedule()
         }}
       >
 <Container sx={{py:8}} maxWidth="sm">
-            
+<Typography
+              component="h1"
+              variant="h2"
+              align="center"
+              color="text.primary"
+              
+              mb="55"
+            >
+            Training
+                </Typography>
+<Stack
+              sx={{ pt: 4 }}
+              direction="row"
+              spacing={2}
+              justifyContent="center"
+            >
+                <Button sx={{mb:5}}component={Link} variant="contained" to={`/private/${user.id}`}>Private</Button>
+
+            </Stack>
             <Grid>
                 {currentClasses.map((schedule)=>(
 

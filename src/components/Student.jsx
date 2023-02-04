@@ -29,12 +29,12 @@ const Students =()=>{
 
 const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
-   
+ 
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-      await axios.post(`${BASE_URL}/userclasses/user/${formValues.userId}/class/${formValues.classId}`)
+      await Client.post(`${BASE_URL}/userclasses/user/${formValues.userId}/class/${formValues.classId}`)
       .then((response)=>{
           return response
       }).catch((error)=>{
@@ -59,7 +59,7 @@ const handleChange = (e) => {
                 <TextField
  onChange={handleChange}
  name="classId"
- type="text"
+ type="number"
  value={formValues.classId}
  required
  fullWidth
@@ -71,7 +71,7 @@ const handleChange = (e) => {
                 <TextField
                  onChange={handleChange}
                  name="userId"
-                 type="text"
+                 type="number"
                  value={formValues.userId}
                  required
                   fullWidth

@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import axios from 'axios';
+import Stack from '@mui/material/Stack';
 import { useEffect,useState } from 'react';
 import { BASE_URL } from '../globals';
 import {useParams,useNavigate,Link} from 'react-router-dom'
@@ -23,15 +24,29 @@ const Classes = ({classData,user,authenticated}) => {
    
 const handleChange =(e)=>{
     setClass(e.target.value)
-    setShow(true)
+    userClass()
 }
 
     let {class_id}=useParams()
+    let {user_id}=useParams()
+    const studentId=user_id
     let navigate=useNavigate()
 	
     const session= async()=>{
         const response=await axios.get(`${BASE_URL}/classes/${getClass}`)
+       
         setSelectedClass(response.data)
+    }
+
+    const userClass=async()=>{
+        const response = await axios.get(`${BASE_URL}/userclasses/class/${getClass}`)
+        console.log(response.data[0].user_list[0].id)
+        if (response.data==studentId){
+            setShow(true)
+        }
+        else{
+            alert("The class Number inputed is not correct, please try again")
+        }
     }
 
     useEffect(()=>{
@@ -54,15 +69,16 @@ const handleChange =(e)=>{
             
           
 		<Container sx={{py:8}} maxWidth="sm">
-        <Typography component="h1" variant="h5" sx={{bottom:25}}>
-              Input your class number to pay for private session
+        <Typography    component="h5"
+              variant="h5"
+              align="center"
+              color="text.primary"
+              
+              mb="55" sx={{bottom:25}}>
+              Input your class number to pay for a private session
             </Typography>
+            
                <TextField
-
-    
-
-
-
  name="classNumber"
  type="text"
 value={getClass}
@@ -71,7 +87,11 @@ onChange={handleChange}
  label="Class Number"
                   autoFocus
                   sx={{bottom: 15, top:20}}
+                
                 />
+            
+                <Button sx={{mt:5}} justifyContent="center" size="small" onClick={handleChange}>Submit</Button>
+               
              {show &&(
             <Grid sx={{py:5}} >
                 <Card sx={{height:'650px',display:'flex',flexDirection:'column'}}>
@@ -102,7 +122,8 @@ onChange={handleChange}
         </CardContent>
         </Card>
         </Grid>
-        )}
+        )
+        }
 		</Container>
         </Grid>
         

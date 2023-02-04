@@ -31,7 +31,7 @@ else if(user){
       {/* <Link to={`/consultation/${user.id}`}>Private Training</Link> */}
       <Link to="/consultation">Consultation</Link>
       <Link to="/schedule">Classes</Link>
-      <Link to ={`/private/${user.id}`}>Private</Link>
+    
           <Link onClick={handleLogOut} to="/">
             Sign Out
           </Link>

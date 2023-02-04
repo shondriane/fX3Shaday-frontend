@@ -36,10 +36,12 @@ const [getStudents,setStudents]= useState([])
                 sx={{marginTop:6, display:'flex', flexDirection:'column', alignItems:'center'}}>
             <Typography variant="h5" sx={{marginBottom: 4}}>Current Students</Typography>
             <Link to={`/student/${classId}`}>
-             <Button variant="contained">Add</Button>
+                <Grid sx={{py:3}}>
+             <Button variant="contained" >Add</Button>
+             </Grid>
             </Link>
            
-            <Grid Container spacing={3}>
+            <Grid Container spacing={3} sx={{py:5}}>
          <List sx={{width:'100%', maxWidth:360, bgcolor:"pink"}}>
       
 {getStudents.map((ele)=>(
