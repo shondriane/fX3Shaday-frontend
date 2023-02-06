@@ -80,7 +80,7 @@ const CLIENT_ID = process.env.REACT_APP_PAYPAL_CLIENT_ID
                {<Avatar sx= {{bgcolor:"red", mb:5,mt:2}} aria-label="company" >FX3</Avatar>}
             
             <Typography component="h6" variant="h6" sx={{marginBottom:5}}>
-             Hi, {user} I look forward to seeing you at the {cost.class}.
+             Hi, {user} I look forward to seeing you at the {cost.class} session.
             </Typography>
             <Typography component="h1" variant="h5"   >
               The cost is ${cost.cost} and you can pay via:

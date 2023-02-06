@@ -1,6 +1,6 @@
-import axios from "axios"
+
 import {BASE_URL} from '../globals'
-import {useEffect,useState} from 'react'
+import {useState} from 'react'
 import { useParams} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
 import LoginIcon from '@mui/icons-material/Login';
@@ -11,9 +11,9 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Client from '../services/Api';
 
-const Students =()=>{
+
+const Students =(user)=>{
     const navigate = useNavigate()
     const {classes_id}=useParams()
     const classId=parseInt(classes_id)
@@ -33,17 +33,26 @@ const handleChange = (e) => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-      await Client.post(`${BASE_URL}/userclasses/user/${formValues.userId}/class/${formValues.classId}`)
-      .then((response)=>{
-          return response
-      }).catch((error)=>{
-          console.error(error)
-      })
-      setFormValues(initialFormValues)
-      navigate('/admin')
-    
-  }
+    e.preventDefault();
+    try {
+        const response = await fetch(`${BASE_URL}/userclasses/user/${formValues.userId}/class/${formValues.classId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                userId: formValues.userId,
+                classId: formValues.classId
+            })
+        });
+
+        if (response.ok) {
+            navigate(`/admin/${user.id}`);
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
 
     return (
         <Container component="main" maxWidth="xs" >

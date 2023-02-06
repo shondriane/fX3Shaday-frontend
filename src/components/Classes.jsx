@@ -11,7 +11,7 @@ import Container from '@mui/material/Container';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import { BASE_URL } from '../globals';
-import {useParams,useNavigate,Link} from 'react-router-dom'
+import {useParams,Link} from 'react-router-dom'
 
 
 const Classes = ({user,authenticated}) => {
