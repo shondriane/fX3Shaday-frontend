@@ -8,66 +8,55 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
 import axios from 'axios';
-import Stack from '@mui/material/Stack';
 import { useEffect,useState } from 'react';
 import { BASE_URL } from '../globals';
 import {useParams,useNavigate,Link} from 'react-router-dom'
 
 
-const Classes = ({classData,user,authenticated}) => {
+const Classes = ({user,authenticated}) => {
     
-    const [selectedClass,setSelectedClass]=useState([])
-   const [getClass,setClass] =useState("")
-   const [show,setShow]=useState(false)
+    const [selectedClass,setSelectedClass]=useState()
+    const [classNumber, setClassNumber] = useState(0);
+    const [show, setShow] = useState(false);
+
+  const { user_id } = useParams();
+  const studentId = user_id;
+
+let data ={}
+  const fetchClass = async () => {
+    const response = await axios.get(`${BASE_URL}/userclasses/user/${studentId}`);
+    setSelectedClass(response.data[0].class_list)
+    console.log(selectedClass)
+  
+  };
    
+  useEffect(() => {
+    fetchClass();
+  }, [studentId]);
+
 const handleChange =(e)=>{
-    setClass(e.target.value)
-    userClass()
+    setClassNumber(e.target.value)
+   
 }
-
-    let {class_id}=useParams()
-    let {user_id}=useParams()
-    const studentId=user_id
-    let navigate=useNavigate()
-	
-    const session= async()=>{
-        const response=await axios.get(`${BASE_URL}/classes/${getClass}`)
-       
-        setSelectedClass(response.data)
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    if(Object.values(selectedClass.includes(`${classNumber}`))){
+        console.log("yes")
+        setShow(true)
+        let findIndexById = selectedClass.findIndex(item => parseInt(item.id) === parseInt(`${classNumber}`))
+      
+      setSelectedClass(selectedClass[findIndexById])
     }
-
-    const userClass=async()=>{
-        const response = await axios.get(`${BASE_URL}/userclasses/class/${getClass}`)
-        console.log(response.data[0].user_list[0].id)
-        if (response.data==studentId){
-            setShow(true)
-        }
-        else{
-            alert("The class Number inputed is not correct, please try again")
-        }
+    else {
+      alert("class number is not a match, please try again");
     }
+  };
 
-    useEffect(()=>{
-         session(getClass)
-        
-    })
 
-    const handleSubmit = async (e,id) => {
-        e.preventDefault()
-    if(!authenticated && !user){
-        navigate(`/register`)
-    }
-    else{
-        navigate(`/myClasses/${user.id}`)
-    }
-}
+
 	return (
-        <Grid container component="main" sx={{height:'100vh'}}>
-           
-            
-          
+        <Grid container component="main" sx={{height:'100vh'}}>   
 		<Container sx={{py:8}} maxWidth="sm">
         <Typography    component="h5"
               variant="h5"
@@ -81,8 +70,8 @@ const handleChange =(e)=>{
                <TextField
  name="classNumber"
  type="text"
-value={getClass}
-onChange={handleChange}
+value={classNumber}
+onChange={(e)=>setClassNumber(e.target.value)}
  required
  label="Class Number"
                   autoFocus
@@ -90,7 +79,7 @@ onChange={handleChange}
                 
                 />
             
-                <Button sx={{mt:5}} justifyContent="center" size="small" onClick={handleChange}>Submit</Button>
+                <Button sx={{mt:5}} justifyContent="center" size="small" onClick={handleSubmit}>Submit</Button>
                
              {show &&(
             <Grid sx={{py:5}} >
@@ -105,7 +94,7 @@ onChange={handleChange}
            </Typography>
            <CardActions>
           
-            <Link to={`/privateTraining/${user.id}/1`}>
+            <Link to={`/privateTraining/${user.id}/${classNumber}`}>
             <Button size="small"> Book</Button>
             </Link>
                
