@@ -27,7 +27,7 @@ let data ={}
   const fetchClass = async () => {
     const response = await axios.get(`${BASE_URL}/userclasses/user/${studentId}`);
     setSelectedClass(response.data[0].class_list)
-    console.log(selectedClass)
+    
   
   };
    
@@ -42,7 +42,6 @@ const handleChange =(e)=>{
 const handleSubmit = async (e) => {
     e.preventDefault();
     if(Object.values(selectedClass.includes(`${classNumber}`))){
-        console.log("yes")
         setShow(true)
         let findIndexById = selectedClass.findIndex(item => parseInt(item.id) === parseInt(`${classNumber}`))
       
