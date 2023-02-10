@@ -131,7 +131,9 @@ let navigate=useNavigate()
                 name="message"
                 type="text"
                 label='Message'
-                paragraph
+                multiline
+                rows={8}
+                variant="outlined"
               />
            
            <Button type="submit" fullWidth sx={{mt:3,mb:2}} variant="contained" endIcon={<LoginIcon/>}>Submit</Button>

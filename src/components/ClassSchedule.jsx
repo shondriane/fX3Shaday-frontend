@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 
 const ClassSchedule = ({user,authenticated}) => {
     const [getClasses,setClasses]= useState([])
-let newClass = []
+
 
 
    
@@ -21,14 +21,14 @@ let navigate=useNavigate()
 
 
 
-    const classes = async () => {
+    const classes =async () => {
 		const response = await axios.get(
 			`${BASE_URL}/classes/`
 		);
-    // setClasses(response.data)
+    let newClass = []
  for (let i=0; i<response.data.length;i++){
 
-  if (response.data[i].date.slice(0,10)>= new Date().toISOString().slice(0,10) && response.data[i].capacity!=0){
+  if (response.data[i].date.slice(0,10)>= new Date().toISOString().slice(0,10) && response.data[i].capacity!==0){
    
     let date= new Date (response.data[i].date)
     response.data[i].date = date.toLocaleDateString('en-us')
@@ -37,15 +37,24 @@ let navigate=useNavigate()
     
 
   let dayOfWeek = date.toLocaleDateString('en-us',{weekday:'long'})
-    response.data[i].date= dayOfWeek+ "," +" "+response.data[i].date.slice(0,10)
+    response.data[i].date= dayOfWeek + ', ' + response.data[i].date.slice(0, 10);
  
     let hours = response.data[i].time.slice(0,2)
     let amOrpm= hours >= 12 ? 'pm': 'am'
     hours =(hours%12)||12
     let minutes = response.data[i].time.slice(3,5)
  
-     response.data[i].time = dayOfWeek+" " + "at " +hours + ":" + minutes+ " "+ amOrpm +" until " + finish
-    newClass.push(response.data[i])
+     response.data[i].time = dayOfWeek +
+     ' at ' +
+     hours +
+     ':' +
+     minutes +
+     ' ' +
+     amOrpm +
+     ' until ' +
+     finish;
+   newClass.push(response.data[i]);
+
     
   }
  }
@@ -53,13 +62,10 @@ let navigate=useNavigate()
 
   }
 
-
-
-
     useEffect(()=>{
         classes() 
       
-       },[getClasses]) 
+       },[]) 
        
 
        const handleSubmit = async (e,id) => {
@@ -101,9 +107,9 @@ navigate(`/privateTraining/${user.id}/${id}`)
       
        
         
-        {getClasses?.map((session)=>( 
+        {getClasses?.map((session,index)=>( 
           
-            <Card  sx={{display:'flex',justifyContent:"center",pb:2,mt:3,bgcolor:"pink"}}>
+            <Card key={index} sx={{display:'flex',justifyContent:"center",pb:2,mt:3,bgcolor:"pink"}}>
             <Box sx={{display:'flex', flexDirection:'column'}}>
         <CardContent sx={{flex:'2 0 auto'}} >
             <Typography component="div" variant="h5">
