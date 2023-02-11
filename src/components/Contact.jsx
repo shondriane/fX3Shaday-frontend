@@ -61,7 +61,7 @@ let navigate=useNavigate()
             backgroundPosition: 'center',
           }}
         />
-        <Grid item xs={12} sm={8} md={5}  elevation={6} square>
+        <Grid item xs={12} sm={8} md={5}  elevation={6} square="true">
           <Box
             sx={{
               my: 8,

@@ -14,14 +14,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {Link} from 'react-router-dom';
-import { createTheme } from '@mui/material/styles';
 import { useEffect } from 'react';
-import DeleteIcon from '@mui/icons-material/Delete'
 import Client from '../services/Api';
 import { useNavigate,useParams } from 'react-router-dom';
-import ClearIcon from '@mui/icons-material/Clear';
 import Reviews from './Reviews'
-import { RepeatOneSharp } from '@mui/icons-material';
+
 
 const TestComponent = ({user}) => {
 
@@ -89,27 +86,12 @@ const classes = async () => {
 
 
 
- const handleDeleteClick = async (e,id) => {
 
-  await Client.delete(`${BASE_URL}/classes/${id}`,{
-    classId:id
-  });
-navigate(`/classes`)
-
-};
-
-const handleClick=async(e,id)=>{
-setShow(true)
-}
-
-const handleUpdateClick = () => {
-  navigate(`/classes`);
-};
 
 
    
   
-  const theme= createTheme()
+ 
 		
   return (
     <>
@@ -164,9 +146,9 @@ const handleUpdateClick = () => {
 
 {getClasses?.map((session)=>(
  
-    <Grid item  xs={12} sm={6}md={6}>
+    <Grid key={session.id} item  xs={12} sm={6}md={6}>
        
-    <Card key={session.id}
+    <Card 
     sx={{ height: '500px', display: 'flex', flexDirection: 'column' }}
   >
     <CardMedia
@@ -184,49 +166,9 @@ const handleUpdateClick = () => {
       </Typography>
       <Typography>
         {session.description}
-      </Typography>
-     
-      {show && `${user.id}`===36&&(
-      <CardActions>
-     
-          
-	
-            <Button  component={Link} to={`/updateClass/${session.id}`} size="small"> Update</Button>
-            <Button onClick={(e)=>handleClick(e,session.id)}size="small"> Delete </Button>
-           </CardActions>
-      )}
-           {show &&(
-					 <div id ="id01" className="modal">
-                    
-                     <form className="modal-content">
-                         <div className="container">
-<h1>
-Delete Class
-</h1>
-<p>
-Are you sure you want to delete the Class?
-</p>
-                        
-                         
-                   <div class="clearfix">
-                   <Button variant="contained" endIcon = {<ClearIcon/>} onClick={handleUpdateClick}>
-                         cancel
-                     </Button>
-                     <Button variant="outlined"  startIcon={<DeleteIcon/>} onClick={(e)=>handleDeleteClick(e,session.id)}>
-                         Delete 
-                     </Button>
-                    
-                     </div>
-                 </div>
-                 </form>
-                 </div>
-                )}
-                
+      </Typography>          
     </CardContent>
-    
-   
   </Card>
- 
   </Grid>
 
   
@@ -262,6 +204,7 @@ Are you sure you want to delete the Class?
 {reviews.slice(Math.floor(Math.random()*15),reviews.length).map((review)=>(
 
 <Reviews
+key={review.id}
  id={review.id}
  name={review.name}
  comment={review.comment}

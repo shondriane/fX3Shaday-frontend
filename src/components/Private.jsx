@@ -29,7 +29,7 @@ const Private=()=>{
  
      
         
-        <div class="calendly-inline-widget">
+        <div className="calendly-inline-widget">
          <InlineWidget
         url="https://calendly.com/shondriane-wise/30min" style="min-width:320px;height:630px;" 
         type="text/javascript"
