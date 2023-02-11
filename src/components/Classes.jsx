@@ -47,7 +47,6 @@ const handleSubmit = async (e) => {
 
     if (updatedSelectedClass) {
         const matchingClass = updatedSelectedClass.find(cls => parseInt(cls.id) === parseInt(`${classNumber}`));
-        console.log(matchingClass)
         if (matchingClass) {
             setSelectedClass(matchingClass)
             setShow(true);

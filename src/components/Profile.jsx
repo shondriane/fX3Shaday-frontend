@@ -35,7 +35,7 @@ const Profile = ({ user,handleLogOut,authenticated }) => {
 		const response = await axios.get(`${BASE_URL}/users/${userId}`);
 		setProfile(response.data);
     let index = Math.floor(Math.random()*motivationArray.length)
-    console.log(index)
+  
     setMotivationQuote(motivationArray[index])
 	};
   

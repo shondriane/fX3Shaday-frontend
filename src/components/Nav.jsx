@@ -3,18 +3,25 @@ import React, {useState} from 'react'
 import '../styling/Nav.css'
 import { faBars} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AppBar, Toolbar } from '@mui/material';
 
 
 const Nav = ({ user, handleLogOut }) => {
 
   const [showNav, setShowNav] = useState(false);
-
+  const styles = {
+    customizeToolbar: {
+      minHeight: 36
+    }
+  };
+  
 
 let navOptions
   
 
 if (user && user.id===36){
     navOptions=(
+      <AppBar>
           <nav>
             <FontAwesomeIcon icon={faBars} className="fas fa-bars hamburger" onClick={() => setShowNav(!showNav)} />
 
@@ -27,10 +34,12 @@ if (user && user.id===36){
             </Link>
             </div>
           </nav>
+          </AppBar>
       )
     }
 else if(user){
     navOptions=(
+      <AppBar>
       <nav>
        <FontAwesomeIcon icon={faBars} className="fas fa-bars hamburger" onClick={() => setShowNav(!showNav)} />
 
@@ -47,11 +56,14 @@ else if(user){
           </Link>
           </div>
       </nav>
+      </AppBar>
     )
 }
 
   else{
   navOptions=(
+    <AppBar>
+  
     <nav>
     <FontAwesomeIcon icon={faBars} className="fas fa-bars hamburger" onClick={() => setShowNav(!showNav)} />
     <div className={`nav-links ${showNav ? 'show-nav' : ''}`}>
@@ -63,6 +75,8 @@ else if(user){
       <Link to="/contact" onClick={() => setShowNav(false)}>Contact</Link>
     </div>
   </nav>
+
+  </AppBar>
       )
 
   }

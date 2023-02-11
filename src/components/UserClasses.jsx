@@ -23,7 +23,7 @@ const [getStudents,setStudents]= useState([])
    
     setStudents(response.data[0].user_list)
     }
-    console.log(getStudents)
+   
     useEffect(()=>{
         currentStudents()
     },[])
