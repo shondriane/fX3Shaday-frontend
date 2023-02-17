@@ -18,6 +18,10 @@ import { useEffect } from 'react';
 import Client from '../services/Api';
 import { useNavigate,useParams } from 'react-router-dom';
 import Reviews from './Reviews'
+import { createTheme, responsiveFontSizes,ThemeProvider} from '@mui/material/styles';
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 
 const TestComponent = ({user}) => {
@@ -186,23 +190,24 @@ const classes = async () => {
           }}
         >
           <Container maxWidth="sm">
+            <ThemeProvider theme={theme}>
             <Typography
-              component="h1"
+              component="h2"
               variant="h2"
               align="center"
               color="white"
-             
+              
             >
              Testimonies
             </Typography>
-           
+            </ThemeProvider>
          
           </Container>
         </Box>
         <Container id="reviewRatings" maxWidth="md"componenet="main">
 
 {reviews.slice(Math.floor(Math.random()*15),reviews.length).map((review)=>(
-
+<ThemeProvider theme={theme}>
 <Reviews
 key={review.id}
  id={review.id}
@@ -210,7 +215,7 @@ key={review.id}
  comment={review.comment}
  rating={review.rating}
  />
-  
+  </ThemeProvider>
 ))}
 
 

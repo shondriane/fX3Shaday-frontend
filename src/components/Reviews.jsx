@@ -13,17 +13,17 @@ const Review =({id,comment,rating,name})=>{
 
  
     return(
-      <div >
+      <div sx={{mx:'auto'}}padding="2%">
        
-        <Box  component ="span" sx={{display:'column', mx:'2px',justifyConent:"center", alignItems:"center"}}>
-        <Grid  className="reviewRatings" container spacing={4} direction="flex" flexWrap="wrap"alignItems="center" justify="center">
+        <Box  component ="span" sx={{display:'column'}}>
+        <Grid  className="reviewRatings" container spacing={4} direction="flex" flexWrap="wrap"alignItems="center" justify="center" margin="auto" padding="2%" width="70%">
       
-       <Card  sx={{display: 'flex', flexGrow:1}}>
+       <Card  sx={{display: 'flex', flexGrow:1} }>
         <CardContent>
             <Typography>
                 {name}
             </Typography>
-          <Typography sx={{ fontSize: 14 }} color="red" >
+          <Typography  color="red" >
             Level  of Fun
           </Typography>
           <Rating name="read-only" value={rating} readOnly />
