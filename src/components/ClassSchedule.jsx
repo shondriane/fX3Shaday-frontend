@@ -17,30 +17,31 @@ const ClassSchedule = ({user,authenticated}) => {
  
 let navigate=useNavigate()
 
-    const classes =async () => {
-		const response = await axios.get(
-			`${BASE_URL}/classes/`
-		);
-    let newClass = []
- for (let i=0; i<response.data.length;i++){
+const classes = async () => {
+  const response = await axios.get(`${BASE_URL}/classes/`);
+  const newClass = response.data
+    .filter(classData => {
+      const classDate = classData.date.slice(0, 10);
+      return classDate >= new Date().toISOString().slice(0, 10) && classData.capacity !== 0;
+    })
+    .map(classData => {
+      const date = classData.date.slice(0, 10);
+      const formattedDateStr = moment(date, 'YYYY-MM-DD').format('MM-DD-YY');
+      const day = moment(formattedDateStr, 'MM-DD-YY').format('dddd');
+      const end = moment(formattedDateStr, 'MM-DD-YY').add(11, 'weeks').format('MM-DD-YY');
+      const formatTime = moment(classData.time, 'HH:mm');
+      const time = formatTime.format('h:mm A');
+      return {
+        ...classData,
+        date: formattedDateStr,
+        day,
+        end,
+        time
+      };
+    });
+  setClasses(newClass);
+};
 
-  if (response.data[i].date.slice(0,10)>= new Date().toISOString().slice(0,10) && response.data[i].capacity!==0){
-
-    let date = response.data[i].date.slice(0,10)
-    let formattedDateStr = moment(date, 'YYYY-MM-DD').format('MM-DD-YYYY');
-
-    response.data[i].date = formattedDateStr
-    response.data[i].day = moment(response.data[i].date, 'MM-DD-YYYY').format('dddd')
-    response.data[i].end = moment(response.data[i].date, 'MM-DD-YYYY').add(11, 'weeks').format("MM-DD-YY")
-    let formatTime = moment(response.data[i].time, 'HH:mm')
-    response.data[i].time = formatTime.format('h:mm A')
-
-   newClass.push(response.data[i]);  
-  }
- }
- setClasses(newClass)
-
-  }
 
     useEffect(()=>{
         classes() 

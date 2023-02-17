@@ -17,7 +17,7 @@ import { useEffect,useState } from 'react';
 import { BASE_URL } from '../globals';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import AddReview from './AddReview';
+import moment from 'moment';
 
 const MyClasses=({user})=>{
     const navigate=useNavigate()
@@ -25,9 +25,16 @@ const MyClasses=({user})=>{
 
  const schedule= async()=>{
     const response=await axios.get(`${BASE_URL}/userclasses/user/${user.id}`)
-    setClasses(response.data[0].class_list)
-   
-   
+    const data = response.data[0].class_list;
+    const classList = data.map((item) => {
+      const date = moment(item.date, 'YYYY-MM-DD').format('MM-DD-YY');
+      item.date= date;
+      const time = moment(item.time, 'HH:mm').format('h:mm A');
+      item.time=time
+      return { ...item};
+    });
+      
+   setClasses(classList)
 }
 const handleClick = (e,id) => {
     navigate(`/addReview/${id}`);
@@ -70,7 +77,7 @@ schedule()
                 {currentClasses.map((schedule)=>(
 
                
-                <Card sx={{height:'100%',display:'flex',flexDirection:'column'}}>
+                <Card key={schedule.id} sx={{height:'100%',display:'flex',flexDirection:'column'}}>
                     <CardHeader
                 avatar={<Avatar sx= {{bgcolor:red[500]}} aria-label="company" >FX3</Avatar>}
                 title= {schedule.class}
