@@ -199,7 +199,7 @@ const classes = async () => {
              Get Results
             </Typography>
             <Typography variant="h5" align="center" color="text.secondary" paragraph>
-              You can see and feel with an 11-week private or group class
+              You can see and feel with an 11-week private training or group class
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -208,7 +208,7 @@ const classes = async () => {
               justifyContent="center"
             >
        
-              <Button variant="contained" component={Link} to="/consultation">Private</Button>
+              <Button variant="contained" component={Link} to="/consultation">Private Training</Button>
               
               <Button variant="outlined" component={Link} to="/schedule">Group Classes</Button>
             </Stack>
