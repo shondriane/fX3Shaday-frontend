@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
+import { purple,gray,blue } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import Box from '@mui/material/Box';
 import {Link,useNavigate,usParams} from 'react-router-dom';
@@ -18,6 +18,7 @@ import { BASE_URL } from '../globals';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import moment from 'moment';
+
 
 const MyClasses=({user})=>{
     const navigate=useNavigate()
@@ -79,19 +80,19 @@ schedule()
                
                 <Card key={schedule.id} sx={{height:'100%',display:'flex',flexDirection:'column'}}>
                     <CardHeader
-                avatar={<Avatar sx= {{bgcolor:red[500]}} aria-label="company" >FX3</Avatar>}
+                avatar={<Avatar sx= {{bgcolor:purple['400']}} aria-label="company" >FX3</Avatar>}
                 title= {schedule.class}
                 subheader={schedule.date} 
                 
                 />
                    
-                    <CardContent sx={{flexGrow:1}}>
+                    <CardContent sx={{bgcolor:"lightgray",flexGrow:1}}>
                     <Typography   variant="h5" component ="h2">
                         Scheduled on {schedule.date=new Date(schedule.date).toLocaleDateString('en-us')} at {schedule.time}
            </Typography>
-           <CardActions>
+           <CardActions >
         Review
-           <IconButton key ={schedule.id}onClick={(e)=>handleClick(e,schedule.id)}style={{color:"red"}}>
+           <IconButton key ={schedule.id}onClick={(e)=>handleClick(e,schedule.id)}style={{color:purple['400']}}>
 <FavoriteIcon/>
            </IconButton>
          
@@ -99,7 +100,9 @@ schedule()
            </CardActions>
        
         </CardContent>
+  
         </Card>
+      
          ))}
         </Grid>
 		</Container>
