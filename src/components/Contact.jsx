@@ -17,14 +17,11 @@ import { useNavigate } from 'react-router-dom';
 const KEY = process.env.REACT_APP_PUBLIC_KEY
 const TEMPLATE= process.env.REACT_APP_TEMPLATE_ID
 const SERVICE= process.env.REACT_APP_SERVICE_ID
+const PHONE = process.env.REACT_APP_PHONE
 
  const Contact=()=>{
 let navigate=useNavigate()
-    const siteProps={
-        phone:"555-123-4567",
-        email: "FX3Shaday@mail.com",
-        background:"https://i.ibb.co/0F7hT92/airb0676.jpg"
-    }
+    
 
 
     const form = useRef();
@@ -86,7 +83,8 @@ let navigate=useNavigate()
               color="text.primary"
              >
              I want to hear your fitness goals
-             <a href={`tel:{siteProps.phone}`}>
+             <a href={`tel:${PHONE}`}>
+             
             <LocalPhoneIcon/>
             </a>
             </Typography>
