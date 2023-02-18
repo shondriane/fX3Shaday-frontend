@@ -23,7 +23,7 @@ const Review =({id,comment,rating,name})=>{
             <Typography>
                 {name}
             </Typography>
-          <Typography  color="red" >
+          <Typography  color="purple" >
             Level  of Fun
           </Typography>
           <Rating name="read-only" value={rating} readOnly />

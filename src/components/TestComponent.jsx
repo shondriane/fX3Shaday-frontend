@@ -181,7 +181,39 @@ const classes = async () => {
      </Grid>
         </Container>
        
-        
+        <Box
+          sx={{
+            bgcolor: 'background.paper',
+            pt: 8,
+            pb: 6,
+          }}
+        >
+          <Container maxWidth="sm">
+            <Typography
+              component="h1"
+              variant="h2"
+              align="center"
+             
+              
+            >
+             Get Results
+            </Typography>
+            <Typography variant="h5" align="center" color="text.secondary" paragraph>
+              You can see and feel with an 11-week private or group class
+            </Typography>
+            <Stack
+              sx={{ pt: 4 }}
+              direction="row"
+              spacing={2}
+              justifyContent="center"
+            >
+       
+              <Button variant="contained" component={Link} to="/consultation">Private</Button>
+              
+              <Button variant="outlined" component={Link} to="/schedule">Group Classes</Button>
+            </Stack>
+          </Container>
+        </Box>
         <Box
           sx={{
             bgcolor: 'blue',
