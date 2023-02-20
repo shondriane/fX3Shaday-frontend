@@ -91,30 +91,33 @@ navigate(`/privateTraining/${user.id}/${id}`)
             <table>
             <tbody>
               <tr>
-            <th>Class</th>
-            <th>Day</th>
-            <th>Time</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Cost</th>
-            <th>Schedule</th>
+            <th >Class</th>
+            <th >Day</th>
+            <th >Time</th>
+            <th >Start Date</th>
+            <th >End Date</th>
+            <th >Cost</th>
+            <th >Schedule</th>
           </tr>
 
          
-{getClasses?.map((session)=>( 
-  
+  {getClasses?.map((session)=>( 
   <tr  key={session.class}> 
-  <td  >
+
+  <td className="show" >
                 {session.class}
               </td>
-              <td >{session.day}'s</td>
-              <td>{session.time}</td>
-              <td>{session.date}</td>
-              <td>{session.end}</td>
-              <td>${session.cost}</td>
-              <td ><button className="join-cs" onClick={(e)=>handleSubmit(e,session.id)} size="small">Join</button></td>
+              <td className="hide">{session.day}'s</td>
+              <td className="hide">{session.time}</td>
+              <td className="hide">{session.date}</td>
+              <td className="hide">{session.end}</td>
+              <td className="hide">${session.cost}</td>
+              <td className="hide"><button className="join-cs" onClick={(e)=>handleSubmit(e,session.id)} size="small">Join</button></td>
   </tr>
-  ))}       
+  ))}         
+
+
+
   </tbody>      
          </table>
         

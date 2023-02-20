@@ -1,6 +1,6 @@
 import React from 'react'
 import '../index.css'
-import {useRef} from 'react'
+import {useRef,useState} from 'react'
 import emailjs from '@emailjs/browser';
 import CssBaseline from '@mui/material/CssBaseline';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom';
 const KEY = process.env.REACT_APP_PUBLIC_KEY
 const TEMPLATE= process.env.REACT_APP_TEMPLATE_ID
 const SERVICE= process.env.REACT_APP_SERVICE_ID
-const PHONE = process.env.REACT_APP_PHONE
+const PHONE = process.env.REACT_APP_PHONE 
 
  const Contact=()=>{
 let navigate=useNavigate()
@@ -26,19 +26,32 @@ let navigate=useNavigate()
 
     const form = useRef();
 
+    const initialFormValues={
+      name:"",
+      email:"",
+      subject:"",
+      message:""
+        }
+
+        const [formValues,setFormValues]= useState(initialFormValues)
+
+        const handleChange=(e)=>{
+          setFormValues({...formValues,[e.target.name]: e.target.value})
+        }
+
     const sendEmail = (e) => {
       e.preventDefault();
-  
       emailjs.sendForm(SERVICE, TEMPLATE, form.current, KEY)
         .then((result) => {
             console.log(result.text);
         }, (error) => {
             console.log(error.text);
         });
-        goBack()
+        handleSubmit()
     };
 
-    let goBack=()=>{
+    let handleSubmit=()=>{
+      setFormValues(initialFormValues)
         navigate('/')
     }
     return (
@@ -95,34 +108,40 @@ let navigate=useNavigate()
             <Box ref={form} onSubmit={sendEmail}component="form" sx={{ mt: 1 }}>
 
             <TextField
+            onChange={handleChange}
                 margin="normal"
                 required
                 fullWidth
                 name="name"
                 label="Name"
-                
+                value={formValues.name}
                 type="text"
                
               />
             <TextField
+            onChange={handleChange}
                 margin="normal"
                 required
                 fullWidth
                 name="subject"
                 label="Subject"
-                
+                value={formValues.subject}
                 type="text"
                
               />
               <TextField
                 margin="normal"
-              
                 fullWidth
                 label="Email Address"
-                type="email"
+                onChange={handleChange} 
+                value={formValues.email}
+                 type="email"
+                name="email"
                 required
               />
                <TextField
+               onChange={handleChange}
+               value={formValues.message}
                 margin="normal"
                 required
                 fullWidth

@@ -11,6 +11,7 @@ table{
     width: 95%;
     padding:2%
 }
+
 th{
     background-color: blue;
     color:white;
@@ -48,6 +49,7 @@ td:not(:has(button)){
 		display: block; 
      
 	}
+  
 	
 	/* Hide table headers (but not display: none;, for accessibility) */
 	th  { 
